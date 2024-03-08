@@ -1,0 +1,14 @@
+.logo {
+  display: grid;
+  font-family: "duepuntozero", sans-serif;
+  line-height: 0.7;
+  letter-spacing: 1px;
+
+  & :first-child {
+    font-size: size(sm);
+    color: color(primary-500);
+  }
+  & :last-child {
+    font-size: size(xs);
+  }
+}

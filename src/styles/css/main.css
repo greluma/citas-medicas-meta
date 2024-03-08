@@ -142,4 +142,49 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+/* html {
+  font-size: 62.5%;
+} */
+.nav {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: center;
+  padding: 0.5rem 2rem;
+  align-items: center;
+  background-color: #070707;
+  color: #ffffff;
+  border-bottom: #ff5b1a 1px solid;
+}
+.nav-logo {
+  justify-self: start;
+  grid-column: 1/3;
+}
+.nav-user {
+  grid-column: 3/5;
+}
+.nav-options {
+  grid-column: 5/-1;
+  justify-self: end;
+}
+
+.logo {
+  display: grid;
+  font-family: "duepuntozero", sans-serif;
+  line-height: 0.7;
+  letter-spacing: 1px;
+}
+.logo :first-child {
+  font-size: 1.8rem;
+  color: #ff5b1a;
+}
+.logo :last-child {
+  font-size: 1.5rem;
+}
+
+.nav-user {
+  display: flex;
+  justify-content: center;
+  column-gap: 0.5rem;
+}
+
 /*# sourceMappingURL=main.css.map */

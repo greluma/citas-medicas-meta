@@ -1,0 +1,21 @@
+.nav {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: center;
+  padding: 0.5rem 2rem;
+  align-items: center;
+  background-color: color(black);
+  color: color(white);
+  border-bottom: color(primary-500) 1px solid;
+  &-logo {
+    justify-self: start;
+    grid-column: 1 / 3;
+  }
+  &-user {
+    grid-column: 3 / 5;
+  }
+  &-options {
+    grid-column: 5 / -1;
+    justify-self: end;
+  }
+}

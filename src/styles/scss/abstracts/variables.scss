@@ -10,4 +10,21 @@ $colors: (
   grey-700: #515151,
   grey-900: #3c3c3c,
   white: #ffffff,
+  black: #070707,
 );
+
+$font-sizes: (
+  xl: 3rem,
+  lg: 2.5rem,
+  md: 2rem,
+  sm: 1.8rem,
+  xs: 1.5rem,
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@function size($size-name) {
+  @return map-get($font-sizes, $size-name);
+}
