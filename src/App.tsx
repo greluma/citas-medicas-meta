@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import photo from "./assets/images/mano.jpg";
 
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
@@ -8,7 +9,7 @@ import Landing from "./pages/Landing";
 const App = () => {
   return (
     <Router>
-      <Navbar />
+      <Navbar name="mano" img={photo} />
       <SideBar />
       <Routes>
         <Route path="/" element={<Landing />} />

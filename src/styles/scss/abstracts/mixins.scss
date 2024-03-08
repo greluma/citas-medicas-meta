@@ -1,0 +1,25 @@
+@mixin navLink {
+  color: color(white);
+  transition: color 0.3s;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -3px;
+    left: 50%;
+    background-color: color(primary-500);
+    transition: width 0.3s, left 0.3s;
+  }
+
+  &:hover {
+    color: color(primary-500);
+
+    &::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+}

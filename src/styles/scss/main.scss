@@ -3,10 +3,10 @@
 @import "./base/typography.scss";
 @import "./base/base.scss";
 @import "./abstracts/variables.scss";
+@import "./abstracts/mixins.scss";
 
 // layout
 
 // components
 @import "./components/navbar.scss";
 @import "./components/logo.scss";
-@import "./components/nav-userInfo.scss";
