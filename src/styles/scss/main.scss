@@ -6,6 +6,8 @@
 @import "./abstracts/mixins.scss";
 
 // layout
+@import "./layout/main-container.scss";
+@import "./layout/content-container.scss";
 
 // components
 @import "./components/navbar.scss";

@@ -9,12 +9,16 @@ import Landing from "./pages/Landing";
 const App = () => {
   return (
     <Router>
-      <Navbar name="mano" img={photo} />
-      <SideBar />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/info" element={<Informacion />} />
-      </Routes>
+      <div className="main-container">
+        <Navbar name="mano" img={photo} />
+        <div className="content-container">
+          <SideBar />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/info" element={<Informacion />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 };

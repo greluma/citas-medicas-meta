@@ -1,5 +1,6 @@
 .logo {
   display: grid;
+  grid-template-rows: repeat(2, 1fr);
   font-family: "duepuntozero", sans-serif;
   line-height: 0.7;
   letter-spacing: 1px;

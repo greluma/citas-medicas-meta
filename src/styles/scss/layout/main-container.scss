@@ -1,0 +1,11 @@
+.main-container {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: repeat(10, 1fr);
+  & :first-child {
+    grid-row: 1 / 2;
+  }
+  & :last-child {
+    grid-row: 2/ -1;
+  }
+}
