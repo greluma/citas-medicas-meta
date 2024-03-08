@@ -173,7 +173,6 @@ body {
   border: 2px solid #cc4915;
 }
 .nav-user-hello {
-  font-size: 1.2rem;
   text-transform: capitalize;
   letter-spacing: 1px;
   min-width: fit-content;
@@ -232,6 +231,22 @@ body {
   left: 0;
 }
 
+@media screen and (max-width: 768px) {
+  .nav {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0.5rem 1rem;
+    padding: 0.5rem 3rem;
+  }
+  .nav-logo {
+    grid-column: 1/3;
+  }
+  .nav-user {
+    grid-column: 3/-1;
+  }
+  .nav-options {
+    display: none;
+  }
+}
 .logo {
   display: grid;
   font-family: "duepuntozero", sans-serif;
