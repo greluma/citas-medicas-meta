@@ -2,8 +2,47 @@
   background-color: color(black);
   border-right: 1px solid color(primary-500);
   color: white;
+  @include main-padding;
+  box-sizing: border-box;
   &-content {
-    @include main-padding;
+    display: grid;
     height: 100%;
+    grid-template-rows: repeat(10, 1fr);
+    & ul {
+      grid-row: 1/10;
+      display: grid;
+      &:first-child {
+        border-top: 2px solid color(grey-900);
+      }
+      & .sidebar-content-divisor {
+        display: grid;
+        align-content: space-evenly;
+        border-bottom: 2px solid color(grey-900);
+      }
+    }
+  }
+  & .close-sesion-container {
+    text-align: center;
+    grid-row: 10/-1;
+  }
+}
+
+.sideBarLink {
+  color: color(primary-500);
+  text-decoration: none;
+  text-align: center;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  @include myTransition;
+  .sideBarLink-icon {
+    @include myTransition;
+  }
+  &:hover {
+    @include hoverSideBarLink;
+  }
+  &.active {
+    @include hoverSideBarLink;
   }
 }

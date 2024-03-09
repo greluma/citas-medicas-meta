@@ -27,3 +27,14 @@
 @mixin main-padding {
   padding: 0.5rem 2rem;
 }
+
+@mixin myTransition {
+  transition: all 0.3s;
+}
+
+@mixin hoverSideBarLink {
+  color: color(primary-100);
+  .sideBarLink-icon {
+    transform: scale(1.2);
+  }
+}

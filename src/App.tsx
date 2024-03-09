@@ -2,9 +2,17 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import photo from "./assets/images/mano.jpg";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
-import Informacion from "./pages/Informacion";
-import Landing from "./pages/Landing";
 import Container from "./components/Container";
+import {
+  Informacion,
+  Landing,
+  Datos,
+  Users,
+  Centros,
+  Citas,
+  Farmacia,
+  Config,
+} from "./pages";
 
 const App = () => {
   return (
@@ -16,6 +24,12 @@ const App = () => {
           <Container clases="content">
             <Routes>
               <Route path="/" element={<Landing />} />
+              <Route path="/user" element={<Datos />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/centros" element={<Centros />} />
+              <Route path="/citas" element={<Citas />} />
+              <Route path="/farmacia" element={<Farmacia />} />
+              <Route path="/config" element={<Config />} />
               <Route path="/info" element={<Informacion />} />
             </Routes>
           </Container>
