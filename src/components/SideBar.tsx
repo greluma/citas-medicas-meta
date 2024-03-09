@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import SideBarLink from "./SideBarLink";
 
 type RouteType = {
@@ -11,34 +12,35 @@ type ListOfRoutes = {
 };
 
 type SideBarItemsType = ListOfRoutes[];
-
-const sideBarItems: SideBarItemsType = [
-  {
-    pack: "utils",
-    list: [{ name: "mis datos", path: "/user" }],
-  },
-  {
-    pack: "functions",
-    list: [
-      { name: "citas", path: "/citas" },
-      { name: "farmacia", path: "/farmacia" },
-      { name: "centros", path: "/centros" },
-    ],
-  },
-  {
-    pack: "system",
-    list: [
-      { name: "usuarios", path: "/users" },
-      { name: "configuración", path: "/config" },
-    ],
-  },
-];
-
 interface SideBarProps {
   isSideBarOpen: boolean;
 }
 
 const SideBar = ({ isSideBarOpen }: SideBarProps) => {
+  const { t } = useTranslation();
+
+  const sideBarItems: SideBarItemsType = [
+    {
+      pack: "utils",
+      list: [{ name: t("datos"), path: "/user" }],
+    },
+    {
+      pack: "functions",
+      list: [
+        { name: t("citas"), path: "/citas" },
+        { name: t("farmacia"), path: "/farmacia" },
+        { name: t("centros"), path: "/centros" },
+      ],
+    },
+    {
+      pack: "system",
+      list: [
+        { name: t("usuarios"), path: "/users" },
+        { name: t("config"), path: "/config" },
+      ],
+    },
+  ];
+
   return (
     <div className={`${isSideBarOpen && "sidebar-open"} sidebar`}>
       <div className="sidebar-content">
@@ -60,7 +62,7 @@ const SideBar = ({ isSideBarOpen }: SideBarProps) => {
           })}
         </ul>
         <div className="close-sesion-container">
-          <button>cerrar sesion</button>
+          <button>{t("logOut")}</button>
         </div>
       </div>
     </div>

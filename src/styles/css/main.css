@@ -243,7 +243,7 @@ body {
   background-color: transparent;
   border: none;
   font-size: 1.2rem;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 .nav-options li::before {
   content: "";
@@ -261,6 +261,9 @@ body {
 .nav-options li:hover::before {
   width: 100%;
   left: 0;
+}
+.nav-options li .active-language {
+  color: #ff5b1a;
 }
 
 @media screen and (max-width: 768px) {
@@ -351,8 +354,8 @@ body {
   margin-top: 1rem;
 }
 .close-sesion-container button {
-  background-color: #ff5b1a;
-  color: #070707;
+  background-color: #cc4915;
+  color: #ffffff;
   border: none;
   padding: 0.5rem;
   border-radius: 5px;

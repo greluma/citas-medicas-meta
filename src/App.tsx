@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import photo from "./assets/images/mano.jpg";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import Container from "./components/Container";
+
 import {
   Informacion,
   Landing,
@@ -13,7 +15,6 @@ import {
   Farmacia,
   Config,
 } from "./pages";
-import { useState } from "react";
 
 const App = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);

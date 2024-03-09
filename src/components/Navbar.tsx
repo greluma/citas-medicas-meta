@@ -3,6 +3,9 @@ import { MdOutlineLightMode } from "react-icons/md";
 import MetaLogo from "./MetaLogo";
 import { BiCollapseAlt } from "react-icons/bi";
 import NavBarButton from "./NavBarButton";
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 interface NavbarProps {
   name: string;
@@ -11,6 +14,15 @@ interface NavbarProps {
 }
 
 const Navbar = ({ name, img, toggleSideBar }: NavbarProps) => {
+  const { t } = useTranslation();
+  const [lang, setLang] = useState<string>(i18next.language);
+  const isEng = lang === "en";
+  const changeLanguage = () => {
+    const lang = i18next.language === "es" ? "en" : "es";
+    i18next.changeLanguage(lang);
+    setLang(lang);
+  };
+
   return (
     <nav className="nav">
       <div className="nav-logo">
@@ -18,12 +30,14 @@ const Navbar = ({ name, img, toggleSideBar }: NavbarProps) => {
       </div>
       <div className="nav-user">
         <img src={img} alt="user" className="nav-user-img" />
-        <h2 className="nav-user-hello">hi, {name} !</h2>
+        <h2 className="nav-user-hello">
+          {t("saludo")}, {name} !
+        </h2>
       </div>
       <ul className="nav-options">
         <div className="nav-xl">
           <li>
-            <NavBarButton title="es/en" />
+            <NavBarButton isEng={isEng} func={changeLanguage} />
           </li>
           <li>
             <NavBarButton Icon={MdOutlineLightMode} />

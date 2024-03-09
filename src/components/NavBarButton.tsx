@@ -2,15 +2,23 @@ import { ElementType } from "react";
 
 interface NavBarButtonProps {
   Icon?: ElementType;
-  title?: string;
   func?: () => void;
+  isEng?: boolean;
 }
 
-const NavBarButton = ({ Icon, title, func }: NavBarButtonProps) => {
+const NavBarButton = ({ Icon, func, isEng }: NavBarButtonProps) => {
+  console.log(isEng);
+
   return (
     <button className="navbar-btn" onClick={func}>
       {Icon && <Icon />}
-      {title}
+      {isEng !== undefined && (
+        <p>
+          <span className={`${!isEng && "active-language"}`}>es</span>
+          <span>/</span>
+          <span className={`${isEng && "active-language"}`}>en</span>
+        </p>
+      )}
     </button>
   );
 };
