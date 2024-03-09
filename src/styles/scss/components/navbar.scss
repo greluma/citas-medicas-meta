@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   text-align: center;
-  padding: 0.5rem 2rem;
+  @include main-padding;
   align-items: center;
   background-color: color(black);
   color: color(white);

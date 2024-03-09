@@ -1,0 +1,9 @@
+.sidebar {
+  background-color: color(black);
+  border-right: 1px solid color(primary-500);
+  color: white;
+  &-content {
+    @include main-padding;
+    height: 100%;
+  }
+}
