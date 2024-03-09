@@ -34,9 +34,13 @@ const sideBarItems: SideBarItemsType = [
   },
 ];
 
-const SideBar = () => {
+interface SideBarProps {
+  isSideBarOpen: boolean;
+}
+
+const SideBar = ({ isSideBarOpen }: SideBarProps) => {
   return (
-    <div className="sidebar">
+    <div className={`${isSideBarOpen && "sidebar-open"} sidebar`}>
       <div className="sidebar-content">
         <ul>
           {sideBarItems.map((item) => {

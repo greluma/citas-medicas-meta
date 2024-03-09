@@ -1,8 +1,11 @@
 .sidebar {
+  @include main-padding;
+  // TODO: min-width: fit-content;
+  // min-width: fit-content;
   background-color: color(black);
   border-right: 1px solid color(primary-500);
   color: white;
-  @include main-padding;
+  overflow: hidden;
   box-sizing: border-box;
   &-content {
     display: grid;
@@ -30,11 +33,12 @@
 .sideBarLink {
   color: color(primary-500);
   text-decoration: none;
-  text-align: center;
   text-transform: capitalize;
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
+  & h3 {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
   @include myTransition;
   .sideBarLink-icon {
     @include myTransition;
@@ -44,5 +48,28 @@
   }
   &.active {
     @include hoverSideBarLink;
+  }
+}
+
+.close-sesion-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  & button {
+    background-color: color(primary-500);
+    color: color(black);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    @include myTransition;
+    &:hover {
+      background-color: color(primary-700);
+    }
   }
 }

@@ -13,14 +13,22 @@ import {
   Farmacia,
   Config,
 } from "./pages";
+import { useState } from "react";
 
 const App = () => {
+  const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
+
+  function toggleSideBar() {
+    setIsSideBarOpen(!isSideBarOpen);
+    console.log(isSideBarOpen);
+  }
+
   return (
     <Router>
       <Container clases="main-container">
-        <Navbar name="mano" img={photo} />
+        <Navbar name="mano" img={photo} toggleSideBar={toggleSideBar} />
         <Container clases="content-container">
-          <SideBar />
+          <SideBar isSideBarOpen={isSideBarOpen} />
           <Container clases="content">
             <Routes>
               <Route path="/" element={<Landing />} />

@@ -9,10 +9,12 @@ interface SideBarLinkProps {
 const SideBarLink = ({ name, path }: SideBarLinkProps) => {
   return (
     <NavLink to={path} className={`sideBarLink `}>
-      <span>{name}</span>
-      <span className="sideBarLink-icon">
-        <FaLocationArrow />
-      </span>
+      <h3>
+        <span>{name}</span>
+        <span className="sideBarLink-icon">
+          <FaLocationArrow />
+        </span>
+      </h3>
     </NavLink>
   );
 };
