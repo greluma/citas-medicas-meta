@@ -1,4 +1,4 @@
-// import { MdLightMode } from "react-icons/md";
+import { MdLightMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
 import MetaLogo from "./MetaLogo";
 import { BiCollapseAlt } from "react-icons/bi";
@@ -11,9 +11,17 @@ interface NavbarProps {
   name: string;
   img: string;
   toggleSideBar: () => void;
+  toggleLightMode: () => void;
+  isLightMode: boolean;
 }
 
-const Navbar = ({ name, img, toggleSideBar }: NavbarProps) => {
+const Navbar = ({
+  name,
+  img,
+  toggleSideBar,
+  toggleLightMode,
+  isLightMode,
+}: NavbarProps) => {
   const { t } = useTranslation();
   const [lang, setLang] = useState<string>(i18next.language);
   const isEng = lang === "en";
@@ -40,7 +48,10 @@ const Navbar = ({ name, img, toggleSideBar }: NavbarProps) => {
             <NavBarButton isEng={isEng} func={changeLanguage} />
           </li>
           <li>
-            <NavBarButton Icon={MdOutlineLightMode} />
+            <NavBarButton
+              Icon={isLightMode ? MdOutlineLightMode : MdLightMode}
+              func={toggleLightMode}
+            />
           </li>
         </div>
         <div className="nav-md">

@@ -4,8 +4,8 @@
   text-align: center;
   @include main-padding;
   align-items: center;
-  background-color: color(black);
-  color: color(white);
+  background-color: var(--color-background);
+  color: var(--color-text);
   border-bottom: color(primary-500) 1px solid;
   &-logo {
     justify-self: start;
@@ -52,11 +52,16 @@
   position: relative;
 
   & .navbar-btn {
-    color: color(white);
+    color: var(--color-text);
     background-color: transparent;
     border: none;
     font-size: size(xs2);
     letter-spacing: 1.5px;
+    @include myTransition;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &::before {

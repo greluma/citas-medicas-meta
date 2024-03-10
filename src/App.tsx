@@ -18,16 +18,26 @@ import {
 
 const App = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
+  const [isLightMode, setIsLightMode] = useState<boolean>(true);
+
+  function toggleLightMode() {
+    setIsLightMode(!isLightMode);
+  }
 
   function toggleSideBar() {
     setIsSideBarOpen(!isSideBarOpen);
-    console.log(isSideBarOpen);
   }
 
   return (
     <Router>
-      <Container clases="main-container">
-        <Navbar name="mano" img={photo} toggleSideBar={toggleSideBar} />
+      <Container clases={`main-container ${isLightMode && "light"}`}>
+        <Navbar
+          name="mano"
+          img={photo}
+          toggleSideBar={toggleSideBar}
+          toggleLightMode={toggleLightMode}
+          isLightMode={isLightMode}
+        />
         <Container clases="content-container">
           <SideBar isSideBarOpen={isSideBarOpen} />
           <Container clases="content">

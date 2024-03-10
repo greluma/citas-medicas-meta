@@ -7,8 +7,6 @@ interface NavBarButtonProps {
 }
 
 const NavBarButton = ({ Icon, func, isEng }: NavBarButtonProps) => {
-  console.log(isEng);
-
   return (
     <button className="navbar-btn" onClick={func}>
       {Icon && <Icon />}

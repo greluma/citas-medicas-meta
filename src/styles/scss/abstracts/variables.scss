@@ -29,3 +29,18 @@ $font-sizes: (
 @function size($size-name) {
   @return map-get($font-sizes, $size-name);
 }
+
+// themes
+:root {
+  // Tema oscuro
+  --color-text: #ffffff;
+  --color-background: #070707;
+  --main-gray: #3c3c3c;
+
+  // Tema claro
+  .light {
+    --color-text: #070707;
+    --color-background: ffffff;
+    --main-gray: #b5b5b5;
+  }
+}
