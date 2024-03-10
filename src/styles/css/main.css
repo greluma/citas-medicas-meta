@@ -149,11 +149,13 @@ body {
   --color-text: #ffffff;
   --color-background: #070707;
   --main-gray: #3c3c3c;
+  --color-background-secondary: #131212;
 }
 :root .light {
   --color-text: #070707;
-  --color-background: ffffff;
+  --color-background: #ffffff;
   --main-gray: #b5b5b5;
+  --color-background-secondary: #f8f8f8;
 }
 
 .main-container {
@@ -198,6 +200,12 @@ body {
     grid-column: 1/7;
   }
 }
+.content {
+  padding: 0.5rem 2rem;
+  background-color: var(--color-background-secondary);
+  color: var(--color-text);
+}
+
 .logo {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
@@ -287,6 +295,7 @@ body {
   letter-spacing: 1px;
   font-size: 0.8rem;
   font-weight: bold;
+  font-family: "duepuntozero", sans-serif;
   transition: all 0.3s;
 }
 .close-sesion-container button:hover {

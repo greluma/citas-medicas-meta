@@ -65,6 +65,7 @@
     letter-spacing: 1px;
     font-size: 0.8rem;
     font-weight: bold;
+    font-family: "duepuntozero", sans-serif;
     @include myTransition;
     &:hover {
       background-color: color(primary-300);

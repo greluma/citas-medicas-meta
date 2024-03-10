@@ -1,0 +1,5 @@
+.content {
+  @include main-padding;
+  background-color: var(--color-background-secondary);
+  color: var(--color-text);
+}
