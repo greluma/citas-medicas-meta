@@ -3,11 +3,10 @@ import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import { useState } from "react";
-import photo from "../assets/images/mano.jpg";
 
 const Landing = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
-  const [isLightMode, setIsLightMode] = useState<boolean>(true);
+  const [isLightMode, setIsLightMode] = useState<boolean>(false);
 
   function toggleLightMode() {
     setIsLightMode(!isLightMode);
@@ -19,8 +18,6 @@ const Landing = () => {
   return (
     <Container clases={`main-container ${isLightMode && "light"}`}>
       <Navbar
-        name="mano"
-        img={photo}
         toggleSideBar={toggleSideBar}
         toggleLightMode={toggleLightMode}
         isLightMode={isLightMode}

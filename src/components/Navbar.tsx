@@ -6,18 +6,14 @@ import NavBarButton from "./NavBarButton";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 interface NavbarProps {
-  name: string;
-  img: string;
   toggleSideBar: () => void;
   toggleLightMode: () => void;
   isLightMode: boolean;
 }
-
 const Navbar = ({
-  name,
-  img,
   toggleSideBar,
   toggleLightMode,
   isLightMode,
@@ -30,6 +26,10 @@ const Navbar = ({
     i18next.changeLanguage(lang);
     setLang(lang);
   };
+  const { user, isLoading, isAuthenticated } = useAuth0();
+  console.log(isLoading, isAuthenticated, user);
+
+  const isUser = isAuthenticated && user;
 
   return (
     <nav className="nav">
@@ -37,10 +37,18 @@ const Navbar = ({
         <MetaLogo />
       </div>
       <div className="nav-user">
-        <img src={img} alt="user" className="nav-user-img" />
-        <h2 className="nav-user-hello">
-          {t("saludo")}, {name} !
-        </h2>
+        {isUser && user.picture && (
+          <img
+            src={user.picture}
+            alt={user.given_name}
+            className="nav-user-img"
+          />
+        )}
+        {isUser && user.given_name && (
+          <h2 className="nav-user-hello">
+            {t("saludo")}, {user.given_name} !
+          </h2>
+        )}
       </div>
       <ul className="nav-options">
         <div className="nav-xl">
