@@ -30,7 +30,10 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }: SideBarProps) => {
   const sideBarItems: SideBarItemsType = [
     {
       pack: "utils",
-      list: [{ name: t("datos"), path: "/user" }],
+      list: [
+        { name: t("home"), path: "/" },
+        { name: t("datos"), path: "/user" },
+      ],
     },
     {
       pack: "functions",

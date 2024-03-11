@@ -7,3 +7,9 @@
 .content-opacity {
   background-color: var(--color-background-op);
 }
+
+@media screen and (min-width: 768px) {
+  .content {
+    background-color: var(--color-background-secondary);
+  }
+}

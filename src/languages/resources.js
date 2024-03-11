@@ -2,6 +2,7 @@ export const resources = {
   en: {
     translation: {
       saludo: "hi",
+      home: "home",
       datos: "my data",
       citas: "appointments",
       farmacia: "pharmacy",
@@ -20,6 +21,7 @@ export const resources = {
   es: {
     translation: {
       saludo: "hola",
+      home: "inicio",
       datos: "mis datos",
       citas: "citas",
       farmacia: "farmacia",
