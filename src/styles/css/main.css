@@ -150,12 +150,14 @@ body {
   --color-background: #070707;
   --main-gray: #3c3c3c;
   --color-background-secondary: #131212;
+  --color-background-op: #242222;
 }
 :root .light {
   --color-text: #070707;
   --color-background: #ffffff;
   --main-gray: #b5b5b5;
   --color-background-secondary: #f8f8f8;
+  --color-background-op: #eceaea;
 }
 
 .main-container {
@@ -204,6 +206,10 @@ body {
   padding: 0.5rem 2rem;
   background-color: var(--color-background-secondary);
   color: var(--color-text);
+}
+
+.content-opacity {
+  background-color: var(--color-background-op);
 }
 
 .logo {

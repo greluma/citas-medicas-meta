@@ -37,6 +37,7 @@ $font-sizes: (
   --color-background: #070707;
   --main-gray: #3c3c3c;
   --color-background-secondary: #131212;
+  --color-background-op: #242222;
 
   // Tema claro
   .light {
@@ -44,5 +45,6 @@ $font-sizes: (
     --color-background: #ffffff;
     --main-gray: #b5b5b5;
     --color-background-secondary: #f8f8f8;
+    --color-background-op: #eceaea;
   }
 }

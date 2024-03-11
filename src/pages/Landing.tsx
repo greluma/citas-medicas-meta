@@ -37,7 +37,7 @@ const Landing = () => {
       />
       <Container clases="content-container">
         <SideBar isSideBarOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
-        <Container clases="content">
+        <Container clases={`content ${isSideBarOpen && "content-opacity"}`}>
           <Outlet />
         </Container>
       </Container>
