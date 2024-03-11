@@ -1,29 +1,33 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CounterState {
+interface AppState {
   value: number;
+  isLightTheme: boolean;
 }
 
-const initialState: CounterState = {
+const initialState: AppState = {
   value: 0,
+  isLightTheme: localStorage.getItem("isLightTheme") === "true" || false,
 };
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const appSlice = createSlice({
+  name: "app",
   initialState,
   reducers: {
     increment: (state) => {
       state.value += 1;
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
+    },
+    toggleLightTheme: (state) => {
+      state.isLightTheme = !state.isLightTheme;
+      localStorage.setItem("isLightTheme", state.isLightTheme.toString());
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, incrementByAmount, toggleLightTheme } =
+  appSlice.actions;
 
-export default counterSlice.reducer;
+export default appSlice.reducer;

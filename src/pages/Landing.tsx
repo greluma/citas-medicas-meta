@@ -4,15 +4,18 @@ import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { toggleLightTheme } from "../features/appSlice";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 
 const Landing = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
   const { isAuthenticated, user } = useAuth0();
 
-  // TODO: Toggle Light Mode desde el redux
-  const [isLightMode, setIsLightMode] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const isLightMode = useAppSelector((state) => state.app.isLightTheme);
+
   function toggleLightMode() {
-    setIsLightMode(!isLightMode);
+    dispatch(toggleLightTheme());
   }
 
   function toggleSideBar() {
