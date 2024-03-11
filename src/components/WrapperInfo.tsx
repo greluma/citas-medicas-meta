@@ -2,8 +2,8 @@ interface WrapperInfoProps {
   title: string;
   img: string;
   desc?: string;
-  func: () => void;
-  btnText: string;
+  func?: () => void;
+  btnText?: string;
 }
 
 const WrapperInfo = ({ title, img, desc, func, btnText }: WrapperInfoProps) => {

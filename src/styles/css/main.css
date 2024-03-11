@@ -454,9 +454,18 @@ body {
   .wrapper-info button {
     font-size: 0.9em;
   }
-  .wrapper-info img {
+  .wrapper-info .img {
     width: 16rem;
   }
+}
+.loader {
+  background-color: var(--color-background);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.loader img {
+  width: 100px;
 }
 
 /*# sourceMappingURL=main.css.map */
