@@ -407,21 +407,22 @@ body {
 .wrapper-info {
   background-color: var(--color-background);
   color: var(--color-text);
-  height: 100vh;
   display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  height: 100vh;
   align-content: center;
-  justify-content: center;
 }
 .wrapper-info-container {
+  grid-column: 4/8;
   text-align: center;
   display: grid;
-  width: 40vw;
   row-gap: 1rem;
   justify-items: center;
   background-color: var(--color-background-secondary);
   padding: 1rem 2rem;
   border-radius: 2rem;
   min-width: fit-content;
+  max-width: fit-content;
 }
 .wrapper-info h2 {
   font-size: 2rem;
@@ -465,8 +466,13 @@ body {
   .wrapper-info button {
     font-size: 0.9em;
   }
-  .wrapper-info .img {
+  .wrapper-info img {
     width: 16rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wrapper-info img {
+    width: 9rem;
   }
 }
 .loader {
