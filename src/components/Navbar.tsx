@@ -4,8 +4,9 @@ import { BiCollapseAlt } from "react-icons/bi";
 import NavBarButton from "./NavBarButton";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { setLang } from "../features/appSlice";
 
 interface NavbarProps {
   toggleSideBar: () => void;
@@ -18,15 +19,17 @@ const Navbar = ({
   isLightMode,
 }: NavbarProps) => {
   const { t } = useTranslation();
-  const [lang, setLang] = useState<string>(i18next.language);
+  const lang = useAppSelector((state) => state.app.lang);
+  const dispatch = useAppDispatch();
+
   const isEng = lang === "en";
   const changeLanguage = () => {
     const lang = i18next.language === "es" ? "en" : "es";
     i18next.changeLanguage(lang);
-    setLang(lang);
+    dispatch(setLang(lang));
   };
-  const { user, isAuthenticated } = useAuth0();
 
+  const { user, isAuthenticated } = useAuth0();
   const isUser = isAuthenticated && user;
   const userName =
     (isUser && user.given_name) || user?.nickname || t("usuario");

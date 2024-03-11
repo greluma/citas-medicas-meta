@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { toggleLightTheme } from "../features/appSlice";
+import { setUser, toggleLightTheme } from "../features/appSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 
 const Landing = () => {
@@ -28,8 +28,13 @@ const Landing = () => {
   useEffect(() => {
     if (!isUser) {
       navigate("/login");
+    } else {
+      const { name, email, picture } = user;
+      if (name && email && picture) {
+        dispatch(setUser({ data: { name, email, picture } }));
+      }
     }
-  }, [isUser, navigate]);
+  }, []);
 
   return (
     <Container clases={`main-container`}>
