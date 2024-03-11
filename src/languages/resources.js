@@ -9,6 +9,7 @@ export const resources = {
       usuarios: "users",
       config: "settings",
       logOut: "log out",
+      usuario: "user",
     },
   },
   es: {
@@ -21,6 +22,7 @@ export const resources = {
       usuarios: "usuarios",
       config: "configuración",
       logOut: "cerrar sesión",
+      usuario: "usuario",
     },
   },
 };

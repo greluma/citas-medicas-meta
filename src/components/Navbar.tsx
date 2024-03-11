@@ -1,5 +1,4 @@
-import { MdLightMode } from "react-icons/md";
-import { MdOutlineLightMode } from "react-icons/md";
+import { MdLightMode, MdOutlineLightMode } from "react-icons/md";
 import MetaLogo from "./MetaLogo";
 import { BiCollapseAlt } from "react-icons/bi";
 import NavBarButton from "./NavBarButton";
@@ -26,10 +25,13 @@ const Navbar = ({
     i18next.changeLanguage(lang);
     setLang(lang);
   };
-  const { user, isLoading, isAuthenticated } = useAuth0();
-  console.log(isLoading, isAuthenticated, user);
+  const { user, isAuthenticated } = useAuth0();
 
   const isUser = isAuthenticated && user;
+  const userName =
+    (isUser && user.given_name) || user?.nickname || t("usuario");
+
+  console.log(user);
 
   return (
     <nav className="nav">
@@ -38,15 +40,11 @@ const Navbar = ({
       </div>
       <div className="nav-user">
         {isUser && user.picture && (
-          <img
-            src={user.picture}
-            alt={user.given_name}
-            className="nav-user-img"
-          />
+          <img src={user.picture} alt="user" className="nav-user-img" />
         )}
-        {isUser && user.given_name && (
+        {isUser && (
           <h2 className="nav-user-hello">
-            {t("saludo")}, {user.given_name} !
+            {t("saludo")}, {userName} !
           </h2>
         )}
       </div>
