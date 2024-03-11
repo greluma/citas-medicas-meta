@@ -1,0 +1,58 @@
+.wrapper-info {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  height: 100vh;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+
+  &-container {
+    text-align: center;
+    display: grid;
+    width: 40vw;
+    row-gap: 1rem;
+    justify-items: center;
+    background-color: var(--color-background-secondary);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    min-width: fit-content;
+  }
+
+  & h2 {
+    font-size: size(md);
+    text-transform: capitalize;
+    color: color(primary-500);
+    font-family: "duepuntozero", sans-serif;
+    letter-spacing: 2px;
+  }
+
+  & img {
+    width: 24rem;
+  }
+
+  & button {
+    @include loginBtn;
+    font-size: 0.9em;
+  }
+  p {
+    letter-spacing: 1px;
+    line-height: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper-info {
+    & h2 {
+      font-size: size(xs);
+    }
+    & p {
+      font-size: 0.9em;
+    }
+    & button {
+      font-size: 0.9em;
+    }
+    & img {
+      width: 16rem;
+    }
+  }
+}

@@ -12,3 +12,20 @@
     transform: scale(1.2);
   }
 }
+
+@mixin loginBtn {
+  background-color: color(primary-500);
+  color: color(white);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: "duepuntozero", sans-serif;
+  @include myTransition;
+  &:hover {
+    background-color: color(primary-300);
+  }
+}

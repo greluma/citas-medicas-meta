@@ -1,13 +1,21 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import WrapperInfo from "../components/WrapperInfo";
+import login_img from "../assets/images/login.svg";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const { loginWithRedirect } = useAuth0();
 
+  const { t } = useTranslation();
+
   return (
-    <div>
-      <h2>Prueba Técnica para el puesto de Front-End en Meta-Enlace</h2>
-      <button onClick={() => loginWithRedirect()}>login / sign up</button>
-    </div>
+    <WrapperInfo
+      title={t("loginPage.title")}
+      btnText={t("loginPage.lgBtn")}
+      img={login_img}
+      func={loginWithRedirect}
+      desc={t("loginPage.desc")}
+    />
   );
 };
 

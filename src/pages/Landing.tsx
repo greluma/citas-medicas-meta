@@ -7,9 +7,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Landing = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
-  const [isLightMode, setIsLightMode] = useState<boolean>(false);
   const { isAuthenticated, user } = useAuth0();
 
+  // TODO: Toggle Light Mode desde el redux
+  const [isLightMode, setIsLightMode] = useState<boolean>(false);
   function toggleLightMode() {
     setIsLightMode(!isLightMode);
   }
@@ -23,13 +24,12 @@ const Landing = () => {
 
   useEffect(() => {
     if (!isUser) {
-      console.log("no user");
       navigate("/login");
     }
   }, [isUser, navigate]);
 
   return (
-    <Container clases={`main-container ${isLightMode && "light"}`}>
+    <Container clases={`main-container`}>
       <Navbar
         toggleSideBar={toggleSideBar}
         toggleLightMode={toggleLightMode}

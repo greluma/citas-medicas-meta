@@ -31,8 +31,6 @@ const Navbar = ({
   const userName =
     (isUser && user.given_name) || user?.nickname || t("usuario");
 
-  console.log(user);
-
   return (
     <nav className="nav">
       <div className="nav-logo">
