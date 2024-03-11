@@ -15,9 +15,10 @@ type ListOfRoutes = {
 type SideBarItemsType = ListOfRoutes[];
 interface SideBarProps {
   isSideBarOpen: boolean;
+  toggleSideBar: () => void;
 }
 
-const SideBar = ({ isSideBarOpen }: SideBarProps) => {
+const SideBar = ({ isSideBarOpen, toggleSideBar }: SideBarProps) => {
   const { logout } = useAuth0();
   const { t } = useTranslation();
 
@@ -60,7 +61,11 @@ const SideBar = ({ isSideBarOpen }: SideBarProps) => {
                   const { name, path } = route;
                   return (
                     <li key={name}>
-                      <SideBarLink name={name} path={path} />
+                      <SideBarLink
+                        name={name}
+                        path={path}
+                        toggleSideBar={toggleSideBar}
+                      />
                     </li>
                   );
                 })}

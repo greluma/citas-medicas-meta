@@ -4,11 +4,12 @@ import { NavLink } from "react-router-dom";
 interface SideBarLinkProps {
   name: string;
   path: string;
+  toggleSideBar: () => void;
 }
 
-const SideBarLink = ({ name, path }: SideBarLinkProps) => {
+const SideBarLink = ({ name, path, toggleSideBar }: SideBarLinkProps) => {
   return (
-    <NavLink to={path} className={`sideBarLink `}>
+    <NavLink to={path} onClick={toggleSideBar} className={`sideBarLink `}>
       <h3>
         <span>{name}</span>
         <span className="sideBarLink-icon">

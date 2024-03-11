@@ -36,7 +36,7 @@ const Landing = () => {
         isLightMode={isLightMode}
       />
       <Container clases="content-container">
-        <SideBar isSideBarOpen={isSideBarOpen} />
+        <SideBar isSideBarOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
         <Container clases="content">
           <Outlet />
         </Container>
