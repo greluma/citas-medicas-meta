@@ -1,13 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
-  const navigate = useNavigate();
-  if (isAuthenticated) {
-    navigate("/");
-  } else {
-    loginWithRedirect();
-  }
+  const { loginWithRedirect } = useAuth0();
+
+  return (
+    <div>
+      <h2>Prueba Técnica para el puesto de Front-End en Meta-Enlace</h2>
+      <button onClick={() => loginWithRedirect()}>login / sign up</button>
+    </div>
+  );
 };
+
 export default Login;

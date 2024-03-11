@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import SideBarLink from "./SideBarLink";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useNavigate } from "react-router-dom";
 
 type RouteType = {
   name: string;
@@ -21,12 +20,10 @@ interface SideBarProps {
 const SideBar = ({ isSideBarOpen }: SideBarProps) => {
   const { logout } = useAuth0();
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   function handleLogout() {
     logout();
     // TODO: redirigir a login
-    navigate("/login");
   }
 
   const sideBarItems: SideBarItemsType = [
