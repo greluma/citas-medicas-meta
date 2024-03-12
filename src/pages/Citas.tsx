@@ -7,6 +7,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { uniqueId } from "lodash-es";
 import { getRandomAppointment } from "../utils/creacion_citas/getRandomAppointment";
 import { formatDate } from "../utils/formatDate";
+import { type Doctor } from "../utils/creacion_citas/relacion_doc_esp";
 
 const Citas = () => {
   const { t } = useTranslation();
@@ -18,6 +19,8 @@ const Citas = () => {
     setSelectedValue(event.target.value);
   };
 
+  const noDoc = doctors.length === 0;
+
   useEffect(() => {
     setSelectedValue(doctors[0]?.id);
   }, [doctors]);
@@ -28,13 +31,10 @@ const Citas = () => {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const specialist = doctors.find((doc) => doc.id === selectedValue)!;
+    const specialist = doctors.find((doc: Doctor) => doc.id === selectedValue)!;
     const id = uniqueId("app_");
     const date = formatDate(getRandomAppointment());
     dispatch(addAppointment({ doctor: specialist, date, id }));
-    // console.log(specialist);
-    // console.log(id);
-    // console.log(date);
   }
 
   return (
@@ -47,14 +47,17 @@ const Citas = () => {
             name="especialistas"
             id="especialistas"
             onChange={handleChange}
+            disabled={noDoc}
           >
-            {doctors.map((doc) => (
-              <option key={doc.id} value={doc.id}>
-                {doc.especialidad}
-              </option>
-            ))}
+            {noDoc && <option value={""}>no doctor</option>}
+            {!noDoc &&
+              doctors.map((doc) => (
+                <option key={doc.id} value={doc.id}>
+                  {doc.especialidad}
+                </option>
+              ))}
           </select>
-          <button type="submit">
+          <button type="submit" disabled={noDoc}>
             <IoIosAddCircleOutline />
           </button>
         </div>
@@ -72,3 +75,13 @@ const Citas = () => {
   );
 };
 export default Citas;
+
+{
+  /* {noDoc ||
+              (<option value={""}>No doctors available</option> &&
+                doctors.map((doc) => (
+                  <option key={doc.id} value={doc.id}>
+                    {doc.especialidad}
+                  </option>
+                )))} */
+}

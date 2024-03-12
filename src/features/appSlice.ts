@@ -37,6 +37,15 @@ const initialState: AppState = {
   appointments: [],
 };
 
+/* const NoDoctor: Doctor = {
+  id: "no-doc",
+  name: "",
+  email: "",
+  picture: "",
+  especialidad: "",
+  phone: "",
+}; */
+
 export const appSlice = createSlice({
   name: "app",
   initialState,

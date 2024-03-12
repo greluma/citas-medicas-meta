@@ -17,5 +17,3 @@ export async function createDocs(): Promise<Doctor[]> {
   }));
   return docs;
 }
-
-// console.log(await createDocs());
