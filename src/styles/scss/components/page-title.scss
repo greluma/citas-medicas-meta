@@ -9,3 +9,9 @@
     border-bottom: 2px solid color(primary-500);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .page-title h2 {
+    font-size: size(sm);
+  }
+}

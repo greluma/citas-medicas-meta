@@ -1,0 +1,75 @@
+.citas-form {
+  justify-self: center;
+  width: 40%;
+  border: 2px solid var(--main-gray);
+  padding: 0.5rem;
+  height: 50%;
+  align-self: center;
+  border-radius: 0.9rem;
+  display: grid;
+  gap: 0.5rem;
+  & h3 {
+    color: color(primary-500);
+    text-transform: capitalize;
+    font-size: size(xs);
+    text-align: center;
+  }
+  & .select-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 0.5rem;
+  }
+
+  & select {
+    min-width: 0;
+    color: var(--color-text);
+    background-color: var(--color-background-secondary);
+    padding: 0.2rem;
+    letter-spacing: 2px;
+    border-radius: 0.3rem;
+
+    &:focus {
+      outline: none;
+      border: 1px solid color(primary-500);
+    }
+  }
+
+  & button {
+    background-color: transparent;
+    border: none;
+    color: color(primary-500);
+    font-size: size(sm);
+    display: grid;
+    justify-content: center;
+    @include myTransition;
+
+    &:hover {
+      color: color(primary-300);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .citas-form {
+    height: 70%;
+    & h3 {
+      font-size: 1em;
+    }
+  }
+}
+
+.citas-resumen {
+  border-top: 2px solid var(--main-gray);
+  & ul {
+    padding: 1rem;
+    height: 100%;
+    display: grid;
+    grid-gap: 1rem;
+    justify-content: center;
+    align-content: start;
+
+    & li {
+      letter-spacing: 1px;
+    }
+  }
+}
