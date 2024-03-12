@@ -1,4 +1,12 @@
+import { useTranslation } from "react-i18next";
+import PageTitle from "../components/PageTitle";
+
 const Citas = () => {
-  return <div>Citas</div>;
+  const { t } = useTranslation();
+  return (
+    <div>
+      <PageTitle title={t("citas")} />
+    </div>
+  );
 };
 export default Citas;

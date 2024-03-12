@@ -206,6 +206,7 @@ body {
   padding: 0.5rem 2rem;
   background-color: var(--color-background-secondary);
   color: var(--color-text);
+  display: grid;
 }
 
 .content-opacity {
@@ -483,6 +484,18 @@ body {
 }
 .loader img {
   width: 100px;
+}
+
+.page-title {
+  font-size: 2rem;
+  color: #ff5b1a;
+  font-family: "duepuntozero", sans-serif;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+}
+.page-title h2 {
+  width: fit-content;
+  border-bottom: 2px solid #ff5b1a;
 }
 
 /*# sourceMappingURL=main.css.map */
