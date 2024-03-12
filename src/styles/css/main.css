@@ -218,6 +218,10 @@ body {
     background-color: var(--color-background-secondary);
   }
 }
+.content-wrapper {
+  background-color: red;
+}
+
 .logo {
   display: grid;
   grid-template-rows: repeat(2, 1fr);

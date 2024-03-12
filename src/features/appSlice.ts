@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
+import { createDocs, Doctor } from "../utils/creacion_citas/relacion_doc_esp";
 
 interface UserData {
   name: string;
@@ -13,13 +14,16 @@ interface AppState {
   isLightTheme: boolean;
   user: User | null;
   lang: "es" | "en";
+  doctors: Doctor[] | [];
 }
+
 const initialState: AppState = {
   isLightTheme: localStorage.getItem("isLightTheme") === "true" || false,
   user: localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user")!)
     : null,
   lang: (localStorage.getItem("lang") as "es" | "en") || "es",
+  doctors: [],
 };
 
 export const appSlice = createSlice({
@@ -38,9 +42,18 @@ export const appSlice = createSlice({
       state.lang = action.payload;
       localStorage.setItem("lang", state.lang);
     },
+    setDoctors: (state, action: PayloadAction<Doctor[]>) => {
+      state.doctors = action.payload;
+    },
   },
 });
 
-export const { toggleLightTheme, setUser, setLang } = appSlice.actions;
+export const { toggleLightTheme, setUser, setLang, setDoctors } =
+  appSlice.actions;
+
+export const fetchDoctors = () => async (dispatch: Dispatch) => {
+  const doctorsData = await createDocs();
+  dispatch(setDoctors(doctorsData));
+};
 
 export default appSlice.reducer;

@@ -18,7 +18,7 @@ interface UserFromAPI {
   phone: string;
 }
 
-interface UserBasicData {
+export interface UserBasicData {
   name: string;
   email: string;
   picture: string;

@@ -1,8 +1,13 @@
 import { especialistas } from "./getEspecialistas";
-import { getRandomUsers } from "./getRandomUsers";
+import { getRandomUsers, type UserBasicData } from "./getRandomUsers";
 import { uniqueId } from "lodash-es";
 
-export async function createDocs() {
+export interface Doctor extends UserBasicData {
+  id: string;
+  especialidad: string;
+}
+
+export async function createDocs(): Promise<Doctor[]> {
   const especialidades = especialistas();
   const users = await getRandomUsers(especialidades.length);
   const docs = especialidades.map((especialidad, index) => ({
