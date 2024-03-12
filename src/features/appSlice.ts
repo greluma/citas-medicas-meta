@@ -1,5 +1,8 @@
 import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
-import { createDocs, Doctor } from "../utils/creacion_citas/relacion_doc_esp";
+import {
+  createDocs,
+  type Doctor,
+} from "../utils/creacion_citas/relacion_doc_esp";
 
 interface UserData {
   name: string;
@@ -10,11 +13,18 @@ interface User {
   data: UserData;
 }
 
+interface Appointment {
+  doctor: Doctor;
+  date: string;
+  id: string;
+}
+
 interface AppState {
   isLightTheme: boolean;
   user: User | null;
   lang: "es" | "en";
   doctors: Doctor[] | [];
+  appointments: Appointment[] | [];
 }
 
 const initialState: AppState = {
@@ -24,6 +34,7 @@ const initialState: AppState = {
     : null,
   lang: (localStorage.getItem("lang") as "es" | "en") || "es",
   doctors: [],
+  appointments: [],
 };
 
 export const appSlice = createSlice({
@@ -45,11 +56,22 @@ export const appSlice = createSlice({
     setDoctors: (state, action: PayloadAction<Doctor[]>) => {
       state.doctors = action.payload;
     },
+    addAppointment: (state, action: PayloadAction<Appointment>) => {
+      state.appointments = [...state.appointments, action.payload];
+      state.doctors = state.doctors.filter(
+        (doc) => doc.id !== action.payload.doctor.id
+      );
+    },
   },
 });
 
-export const { toggleLightTheme, setUser, setLang, setDoctors } =
-  appSlice.actions;
+export const {
+  toggleLightTheme,
+  setUser,
+  setLang,
+  setDoctors,
+  addAppointment,
+} = appSlice.actions;
 
 export const fetchDoctors = () => async (dispatch: Dispatch) => {
   const doctorsData = await createDocs();

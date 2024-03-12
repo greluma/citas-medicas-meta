@@ -1,14 +1,26 @@
 import { useTranslation } from "react-i18next";
 import PageTitle from "../components/PageTitle";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { useEffect } from "react";
-import { fetchDoctors } from "../features/appSlice";
+import React, { useEffect, useState, type ChangeEvent } from "react";
+import { addAppointment, fetchDoctors } from "../features/appSlice";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { uniqueId } from "lodash-es";
+import { getRandomAppointment } from "../utils/creacion_citas/getRandomAppointment";
+import { formatDate } from "../utils/formatDate";
 
 const Citas = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const { doctors } = useAppSelector((state) => state.app);
+  const { doctors, appointments } = useAppSelector((state) => state.app);
+  const [selectedValue, setSelectedValue] = useState<string>("");
+
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedValue(event.target.value);
+  };
+
+  useEffect(() => {
+    setSelectedValue(doctors[0]?.id);
+  }, [doctors]);
 
   useEffect(() => {
     dispatch(fetchDoctors());
@@ -16,7 +28,13 @@ const Citas = () => {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("cita solicitada");
+    const specialist = doctors.find((doc) => doc.id === selectedValue)!;
+    const id = uniqueId("app_");
+    const date = formatDate(getRandomAppointment());
+    dispatch(addAppointment({ doctor: specialist, date, id }));
+    // console.log(specialist);
+    // console.log(id);
+    // console.log(date);
   }
 
   return (
@@ -25,7 +43,11 @@ const Citas = () => {
       <form className="citas-form" onSubmit={handleSubmit}>
         <h3>solicitar nueva cita</h3>
         <div className="select-wrapper">
-          <select name="especialistas" id="especialistas">
+          <select
+            name="especialistas"
+            id="especialistas"
+            onChange={handleChange}
+          >
             {doctors.map((doc) => (
               <option key={doc.id} value={doc.id}>
                 {doc.especialidad}
@@ -39,10 +61,11 @@ const Citas = () => {
       </form>
       <div className="citas-resumen">
         <ul>
-          <li>cita 1</li>
-          <li>cita 2</li>
-          <li>cita 3</li>
-          <li>cita 1</li>
+          {appointments.map((app) => (
+            <li key={app.date}>
+              {app.doctor.especialidad} - {app.doctor.name} - {app.date}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
