@@ -1,0 +1,100 @@
+.cita-detail {
+  display: grid;
+  justify-items: center;
+  &-title {
+    margin-bottom: 2rem;
+    justify-self: start;
+    & h2 {
+      font-size: size(xs2);
+    }
+  }
+  &-info {
+    display: grid;
+    gap: 0.5rem;
+    background-color: var(--color-background-op);
+    width: fit-content;
+    padding: 0.5em;
+    border-radius: 0.7rem;
+    margin-bottom: 0.5rem;
+    & h3 {
+      color: color(primary-300);
+      text-transform: capitalize;
+      font-size: size(xs);
+      text-align: center;
+    }
+    & p {
+      font-size: size(xs2);
+    }
+  }
+
+  &-doc {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    & img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--main-gray);
+    }
+    & p {
+      font-size: size(xs2);
+    }
+    &-data {
+      display: grid;
+      gap: 0.3rem;
+      justify-items: center;
+      & :last-child {
+        font-size: 1em;
+      }
+    }
+  }
+  &-date {
+    justify-self: center;
+    padding: 0.3rem;
+    border-radius: 0.4rem;
+    display: grid;
+    justify-content: center;
+    background-color: var(--main-gray);
+    width: fit-content;
+    gap: 1rem;
+    & p {
+      text-transform: capitalize;
+      font-size: 1rem;
+    }
+  }
+  &-btns {
+    display: flex;
+    gap: 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    & button {
+      @include loginBtn;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cita-detail {
+    &-title {
+      & h2 {
+        font-size: size(md);
+      }
+    }
+    &-info {
+      gap: 1rem;
+      padding: 2rem 1rem;
+      & h3 {
+        font-size: size(xs);
+      }
+      & p {
+        font-size: size(xs);
+      }
+    }
+
+    &-btns {
+      & button {
+        font-size: size(xs2);
+      }
+    }
+  }
+}
