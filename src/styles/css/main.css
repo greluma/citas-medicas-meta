@@ -310,6 +310,10 @@ body {
   padding: 0.2em 0.5em;
   border-radius: 0.3rem;
 }
+.citas-resumen ul a {
+  color: var(--color-text);
+  text-decoration: none;
+}
 .citas-resumen ul p {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr 0.5fr;

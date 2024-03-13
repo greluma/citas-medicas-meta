@@ -9,6 +9,7 @@ import { getRandomAppointment } from "../utils/creacion_citas/getRandomAppointme
 import { formatDate } from "../utils/formatDate";
 import { type Doctor } from "../utils/creacion_citas/relacion_doc_esp";
 import { MdReadMore } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Citas = () => {
   const { t } = useTranslation();
@@ -69,14 +70,16 @@ const Citas = () => {
             const { doctor, date, id } = app;
             return (
               <li key={id} className="citas-resumen-element">
-                <p>
-                  <span>{doctor.especialidad}</span>
-                  <span>{date.time}</span>
-                  <span>{date.date}</span>
-                  <span className="icon">
-                    <MdReadMore />
-                  </span>
-                </p>
+                <Link to={`/citas/cit_${id}`}>
+                  <p>
+                    <span>{doctor.especialidad}</span>
+                    <span>{date.time}</span>
+                    <span>{date.date}</span>
+                    <span className="icon">
+                      <MdReadMore />
+                    </span>
+                  </p>
+                </Link>
               </li>
             );
           })}

@@ -1,4 +1,5 @@
 import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
+import { orgDates } from "../utils/orgDates";
 import {
   createDocs,
   type Doctor,
@@ -16,9 +17,10 @@ interface User {
 interface Date {
   date: string;
   time: string;
+  getTime: number;
 }
 
-interface Appointment {
+export interface Appointment {
   doctor: Doctor;
   date: Date;
   id: string;
@@ -63,6 +65,7 @@ export const appSlice = createSlice({
     },
     addAppointment: (state, action: PayloadAction<Appointment>) => {
       state.appointments = [...state.appointments, action.payload];
+      state.appointments = orgDates(state.appointments);
       state.doctors = state.doctors.filter(
         (doc) => doc.id !== action.payload.doctor.id
       );

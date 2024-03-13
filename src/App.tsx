@@ -12,6 +12,7 @@ import {
   Login,
   Home,
   ErrorPage as Error,
+  CitaDetail,
 } from "./pages";
 import AuthWrapper from "./components/AuthWrapper";
 
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/users" element={<Users />} />
             <Route path="/centros" element={<Centros />} />
             <Route path="/citas" element={<Citas />} />
+            <Route path="/citas/:citaId" element={<CitaDetail />} />
             <Route path="/farmacia" element={<Farmacia />} />
             <Route path="/config" element={<Config />} />
             <Route path="/info" element={<Informacion />} />
