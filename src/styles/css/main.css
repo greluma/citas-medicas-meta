@@ -294,18 +294,49 @@ body {
 }
 .citas-resumen {
   border-top: 2px solid var(--main-gray);
+  max-height: 250px;
+  overflow-y: auto;
 }
 .citas-resumen ul {
   padding: 1rem;
-  height: 100%;
-  max-height: 50px;
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 0.4rem;
   justify-content: center;
   align-content: start;
 }
-.citas-resumen ul li {
+.citas-resumen ul .citas-resumen-element {
   letter-spacing: 1px;
+  background-color: var(--color-background-op);
+  padding: 0.2em 0.5em;
+  border-radius: 0.3rem;
+}
+.citas-resumen ul p {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr 0.5fr;
+  column-gap: 1rem;
+  align-items: center;
+}
+.citas-resumen ul .icon {
+  color: #ff5b1a;
+  justify-self: center;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+}
+.citas-resumen ul .icon:hover {
+  color: #ff7c48;
+  transform: translateX(0.2rem) scale(1.1);
+}
+.citas-resumen::-webkit-scrollbar {
+  width: 10px;
+}
+.citas-resumen::-webkit-scrollbar-track {
+  background: var(--color-background-secondary);
+}
+.citas-resumen::-webkit-scrollbar-thumb {
+  background: #ff7c48;
+}
+.citas-resumen::-webkit-scrollbar-thumb:hover {
+  background: #ff5b1a;
 }
 
 .logo {

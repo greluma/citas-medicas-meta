@@ -60,17 +60,60 @@
 
 .citas-resumen {
   border-top: 2px solid var(--main-gray);
+  max-height: 250px;
+  overflow-y: auto;
   & ul {
     padding: 1rem;
-    height: 100%;
-    max-height: 50px;
+    // height: 100%;
     display: grid;
-    grid-gap: 1rem;
+    grid-gap: 0.4rem;
     justify-content: center;
     align-content: start;
 
-    & li {
+    & .citas-resumen-element {
       letter-spacing: 1px;
+      background-color: var(--color-background-op);
+      padding: 0.2em 0.5em;
+      border-radius: 0.3rem;
+    }
+
+    & p {
+      display: grid;
+      grid-template-columns: 2fr 1fr 2fr 0.5fr;
+      column-gap: 1rem;
+      align-items: center;
+    }
+    & .icon {
+      color: color(primary-500);
+      justify-self: center;
+      font-size: size(xs);
+      @include myTransition;
+
+      &:hover {
+        color: color(primary-300);
+        transform: translateX(0.2rem) scale(1.1);
+      }
+    }
+  }
+
+  // Estilos para la barra de desplazamiento
+  &::-webkit-scrollbar {
+    width: 10px; // Ancho de la barra de desplazamiento
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(
+      --color-background-secondary
+    ); // Color de fondo de la pista de la barra de desplazamiento
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: color(primary-300);
+    // Color de la barra de desplazamiento
+
+    // Estilos para la barra de desplazamiento cuando se pasa el ratón por encima
+    &:hover {
+      background: color(primary-500);
     }
   }
 }

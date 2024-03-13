@@ -8,6 +8,7 @@ import { uniqueId } from "lodash-es";
 import { getRandomAppointment } from "../utils/creacion_citas/getRandomAppointment";
 import { formatDate } from "../utils/formatDate";
 import { type Doctor } from "../utils/creacion_citas/relacion_doc_esp";
+import { MdReadMore } from "react-icons/md";
 
 const Citas = () => {
   const { t } = useTranslation();
@@ -64,24 +65,24 @@ const Citas = () => {
       </form>
       <div className="citas-resumen">
         <ul>
-          {appointments.map((app) => (
-            <li key={app.date}>
-              {app.doctor.especialidad} - {app.doctor.name} - {app.date}
-            </li>
-          ))}
+          {appointments.map((app) => {
+            const { doctor, date, id } = app;
+            return (
+              <li key={id} className="citas-resumen-element">
+                <p>
+                  <span>{doctor.especialidad}</span>
+                  <span>{date.time}</span>
+                  <span>{date.date}</span>
+                  <span className="icon">
+                    <MdReadMore />
+                  </span>
+                </p>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
   );
 };
 export default Citas;
-
-{
-  /* {noDoc ||
-              (<option value={""}>No doctors available</option> &&
-                doctors.map((doc) => (
-                  <option key={doc.id} value={doc.id}>
-                    {doc.especialidad}
-                  </option>
-                )))} */
-}

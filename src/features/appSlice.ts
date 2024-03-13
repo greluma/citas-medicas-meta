@@ -13,9 +13,14 @@ interface User {
   data: UserData;
 }
 
+interface Date {
+  date: string;
+  time: string;
+}
+
 interface Appointment {
   doctor: Doctor;
-  date: string;
+  date: Date;
   id: string;
 }
 
@@ -36,15 +41,6 @@ const initialState: AppState = {
   doctors: [],
   appointments: [],
 };
-
-/* const NoDoctor: Doctor = {
-  id: "no-doc",
-  name: "",
-  email: "",
-  picture: "",
-  especialidad: "",
-  phone: "",
-}; */
 
 export const appSlice = createSlice({
   name: "app",
