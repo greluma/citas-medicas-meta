@@ -15,6 +15,7 @@ const Citas = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { doctors, appointments } = useAppSelector((state) => state.app);
+
   const [selectedValue, setSelectedValue] = useState<string>("");
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -28,8 +29,10 @@ const Citas = () => {
   }, [doctors]);
 
   useEffect(() => {
-    dispatch(fetchDoctors());
-  }, [dispatch]);
+    if (noDoc && appointments.length === 0) {
+      dispatch(fetchDoctors());
+    }
+  }, [dispatch, noDoc, appointments.length]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

@@ -1,7 +1,15 @@
-export function getRandomAppointment(): Date {
-  const today = new Date();
-  const twoMonthsFromNow = new Date();
-  twoMonthsFromNow.setMonth(today.getMonth() + 3);
+export function getRandomAppointment(getTime: number = 0): Date {
+  let today: Date;
+  let twoMonthsFromNow: Date;
+  if (getTime === 0) {
+    today = new Date();
+    twoMonthsFromNow = new Date();
+  } else {
+    today = new Date(getTime);
+    twoMonthsFromNow = new Date(getTime);
+  }
+
+  twoMonthsFromNow.setMonth(twoMonthsFromNow.getMonth() + 2);
 
   const randomTime =
     today.getTime() +
