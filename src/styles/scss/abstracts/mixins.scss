@@ -29,3 +29,29 @@
     background-color: color(primary-300);
   }
 }
+
+@mixin secondary-title {
+  color: color(primary-500);
+  text-transform: capitalize;
+  font-size: size(xs);
+}
+
+@mixin form-border {
+  border: 2px solid var(--main-gray);
+  padding: 0.5rem;
+  border-radius: 0.9rem;
+}
+
+@mixin addBtn {
+  background-color: transparent;
+  border: none;
+  color: color(primary-500);
+  font-size: size(sm);
+  display: grid;
+  justify-content: center;
+  @include myTransition;
+
+  &:hover {
+    color: color(primary-300);
+  }
+}

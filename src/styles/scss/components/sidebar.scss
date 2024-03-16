@@ -5,26 +5,25 @@
   color: var(--color-text);
   overflow: hidden;
   box-sizing: border-box;
+
   &-content {
     display: grid;
-    height: 100%;
-    grid-template-rows: repeat(10, 1fr);
+    gap: 1rem;
     & ul {
-      grid-row: 1/10;
-      display: grid;
       &:first-child {
         border-top: 2px solid var(--main-gray);
       }
       & .sidebar-content-divisor {
         display: grid;
-        align-content: space-evenly;
+        gap: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         border-bottom: 2px solid var(--main-gray);
       }
     }
   }
   & .close-sesion-container {
     text-align: center;
-    grid-row: 10/-1;
   }
 }
 
@@ -52,7 +51,7 @@
 .close-sesion-container {
   display: grid;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   gap: 0.5rem;
   margin-top: 1rem;
   & button {

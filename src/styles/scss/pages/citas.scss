@@ -1,17 +1,15 @@
 .citas-form {
   justify-self: center;
   width: 40%;
-  border: 2px solid var(--main-gray);
-  padding: 0.5rem;
   height: 50%;
+
+  @include form-border;
+
   align-self: center;
-  border-radius: 0.9rem;
   display: grid;
   gap: 0.5rem;
   & h3 {
-    color: color(primary-500);
-    text-transform: capitalize;
-    font-size: size(xs);
+    @include secondary-title;
   }
   & .select-wrapper {
     display: grid;
@@ -35,17 +33,7 @@
   }
 
   & button {
-    background-color: transparent;
-    border: none;
-    color: color(primary-500);
-    font-size: size(sm);
-    display: grid;
-    justify-content: center;
-    @include myTransition;
-
-    &:hover {
-      color: color(primary-300);
-    }
+    @include addBtn;
   }
 }
 

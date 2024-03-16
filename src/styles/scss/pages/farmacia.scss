@@ -1,0 +1,61 @@
+.farmacia {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+
+  & .days-wrapper {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &-content {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+  }
+  &-inputs {
+    display: flex;
+    gap: 0.5rem;
+
+    & input {
+      padding: 0.2rem;
+      border-radius: 0.9rem;
+      width: 100%;
+      text-align: center;
+      //   background-color: var(--color-background-secondary);
+      //   color: var(--color-text);
+      border: 1px solid var(--main-gray);
+      &:focus {
+        outline: none;
+        border: 1px solid color(primary-500);
+      }
+      &::placeholder {
+        // color: var(--color-text);
+        // opacity: 1;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &-form {
+    @include form-border;
+    display: grid;
+    gap: 0.5rem;
+    h3 {
+      @include secondary-title;
+      text-align: center;
+    }
+    button {
+      @include addBtn;
+    }
+  }
+
+  &-list {
+    padding: 0.5rem;
+    width: 100%;
+    border-top: 2px solid var(--main-gray);
+    display: grid;
+    gap: 0.3rem;
+    justify-items: center;
+  }
+}
