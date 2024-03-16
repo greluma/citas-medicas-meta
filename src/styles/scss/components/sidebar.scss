@@ -5,6 +5,7 @@
   color: var(--color-text);
   overflow: hidden;
   box-sizing: border-box;
+  z-index: 10;
 
   &-content {
     display: grid;

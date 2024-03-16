@@ -80,6 +80,8 @@
       justify-self: center;
       font-size: size(xs);
       @include myTransition;
+      background-color: transparent;
+      border: none;
 
       &:hover {
         color: color(primary-300);

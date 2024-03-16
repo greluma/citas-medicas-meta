@@ -8,6 +8,10 @@
     gap: 1rem;
   }
 
+  & .page-title {
+    justify-self: start;
+  }
+
   &-content {
     display: grid;
     justify-items: center;
@@ -58,4 +62,8 @@
     gap: 0.3rem;
     justify-items: center;
   }
+}
+
+.days-span {
+  font-size: 0.8rem;
 }

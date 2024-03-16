@@ -28,12 +28,19 @@ export interface Appointment {
   id: string;
 }
 
+interface Treatment {
+  selectedDays: string[];
+  treatment: string;
+  time: string;
+  id: string;
+}
 interface AppState {
   isLightTheme: boolean;
   user: User | null;
   lang: "es" | "en";
   doctors: Doctor[] | [];
   appointments: Appointment[] | [];
+  treatments: Treatment[] | [];
 }
 
 const initialState: AppState = {
@@ -44,6 +51,7 @@ const initialState: AppState = {
   lang: (localStorage.getItem("lang") as "es" | "en") || "es",
   doctors: [],
   appointments: [],
+  treatments: [],
 };
 
 export const appSlice = createSlice({
@@ -89,6 +97,14 @@ export const appSlice = createSlice({
         getRandomAppointment(appointment!.date.getTime)
       );
     },
+    addTreatment: (state, action: PayloadAction<Treatment>) => {
+      state.treatments = [...state.treatments, action.payload];
+    },
+    deleteTreatment: (state, action: PayloadAction<string>) => {
+      state.treatments = state.treatments.filter(
+        (treatment) => treatment.id !== action.payload
+      );
+    },
   },
 });
 
@@ -100,6 +116,8 @@ export const {
   addAppointment,
   cancelAppointment,
   setAppointmentDate,
+  addTreatment,
+  deleteTreatment,
 } = appSlice.actions;
 
 export const fetchDoctors = () => async (dispatch: Dispatch) => {

@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: fit-content;
+  z-index: 0;
 
   & label {
     text-transform: uppercase;

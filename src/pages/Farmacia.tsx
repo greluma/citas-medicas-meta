@@ -5,6 +5,11 @@ import DayElement from "../components/DayElement";
 import React, { useState } from "react";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
+import { uniqueId } from "lodash-es";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { addTreatment, deleteTreatment } from "../features/appSlice";
+import { MdDeleteOutline } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Farmacia = () => {
   const { t } = useTranslation();
@@ -12,9 +17,10 @@ const Farmacia = () => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [treatment, setTreatment] = useState<string>("");
   const [time, setTime] = useState<string>("10:00");
+  const dispatch = useAppDispatch();
+  const { treatments } = useAppSelector((state) => state.app);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    console.log(selectedDays);
     const { value } = e.target;
     if (selectedDays.includes(value)) {
       setSelectedDays(selectedDays.filter((day) => day !== value));
@@ -25,13 +31,30 @@ const Farmacia = () => {
 
   function handleTreatmentChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTreatment(e.target.value);
-    console.log(e.target.value);
+  }
+
+  function deleteTreatmentHandler(e: React.MouseEvent<HTMLButtonElement>) {
+    dispatch(deleteTreatment(e.currentTarget.ariaLabel!));
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("submit");
-    console.log(selectedDays);
+    if (selectedDays.length === 0 || !treatment) {
+      toast.error("Selecciona al menos un día y un tratamiento");
+      return;
+    }
+    const newTreatment = {
+      selectedDays,
+      treatment,
+      time,
+      id: uniqueId(),
+    };
+
+    dispatch(addTreatment(newTreatment));
+    setSelectedDays([]);
+    setTreatment("");
+    setTime("10:00");
+    toast.success("Tratamiento Agregado");
   }
 
   function handleTimeChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -47,7 +70,7 @@ const Farmacia = () => {
           <div className="farmacia-inputs">
             <input
               type="text"
-              placeholder="ej. ejemplo"
+              placeholder="write meds..."
               value={treatment}
               onChange={handleTreatmentChange}
             />
@@ -61,7 +84,14 @@ const Farmacia = () => {
           </div>
           <div className="days-wrapper">
             {days.map((day) => {
-              return <DayElement val={day} key={day} handler={handleChange} />;
+              return (
+                <DayElement
+                  selectedDays={selectedDays}
+                  val={day}
+                  key={day}
+                  handler={handleChange}
+                />
+              );
             })}
           </div>
         </div>
@@ -69,12 +99,36 @@ const Farmacia = () => {
           <IoIosAddCircleOutline />
         </button>
       </form>
-      <ul className="farmacia-list">
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-      </ul>
+      <div className="citas-resumen farmacia-list">
+        <ul>
+          {treatments.map((treat) => {
+            const { id, selectedDays, time, treatment } = treat;
+
+            return (
+              <li key={id} className="citas-resumen-element">
+                <p>
+                  <span>{treatment}</span>
+                  <span>{time}</span>
+                  <span className="days-span">
+                    {selectedDays.map((day: string, index) => {
+                      return `${day.slice(0, 3)}${
+                        index === selectedDays.length - 1 ? "" : ","
+                      } `;
+                    })}
+                  </span>
+                  <button
+                    className="icon"
+                    aria-label={id}
+                    onClick={deleteTreatmentHandler}
+                  >
+                    <MdDeleteOutline />
+                  </button>
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
