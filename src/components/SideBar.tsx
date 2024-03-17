@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import SideBarLink from "./SideBarLink";
 import { useAuth0 } from "@auth0/auth0-react";
+import NavXlOptions from "./NavXlOptions";
 
 type RouteType = {
   name: string;
@@ -78,6 +79,9 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }: SideBarProps) => {
               </div>
             );
           })}
+        </ul>
+        <ul className="sidebar-options">
+          <NavXlOptions />
         </ul>
 
         <div className="close-sesion-container">

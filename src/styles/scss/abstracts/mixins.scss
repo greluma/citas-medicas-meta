@@ -55,3 +55,48 @@
     color: color(primary-300);
   }
 }
+
+@mixin optionXL {
+  display: flex;
+  justify-content: space-evenly;
+
+  li {
+    transition: color 0.3s;
+    position: relative;
+
+    & .navbar-btn {
+      color: var(--color-text);
+      background-color: transparent;
+      border: none;
+      font-size: size(xs2);
+      letter-spacing: 1.5px;
+      @include myTransition;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 50%;
+      background-color: color(primary-500);
+      transition: width 0.3s, left 0.3s;
+    }
+    &:hover {
+      color: color(primary-500);
+
+      &::before {
+        width: 100%;
+        left: 0;
+      }
+    }
+    & .active-language {
+      color: color(primary-500);
+    }
+  }
+}

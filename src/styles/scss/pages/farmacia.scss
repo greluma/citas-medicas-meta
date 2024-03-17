@@ -67,3 +67,9 @@
 .days-span {
   font-size: 0.8rem;
 }
+
+@media screen and (max-width: 768px) {
+  .days-span {
+    font-size: 0.6rem;
+  }
+}

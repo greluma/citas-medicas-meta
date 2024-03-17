@@ -345,6 +345,11 @@ body {
   background: #ff5b1a;
 }
 
+@media screen and (max-width: 768px) {
+  .citas-resumen-element {
+    font-size: 0.6em;
+  }
+}
 .cita-detail {
   display: grid;
   justify-items: center;
@@ -523,6 +528,11 @@ body {
   font-size: 0.8rem;
 }
 
+@media screen and (max-width: 768px) {
+  .days-span {
+    font-size: 0.6rem;
+  }
+}
 .logo {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
@@ -853,6 +863,52 @@ body {
 }
 .day-element input:focus + label::before {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-xl {
+  display: flex;
+  justify-content: space-evenly;
+}
+.nav-xl li {
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-xl li .navbar-btn {
+  color: var(--color-text);
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+  transition: all 0.3s;
+}
+.nav-xl li .navbar-btn:hover {
+  transform: scale(1.1);
+}
+.nav-xl li::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: #ff5b1a;
+  transition: width 0.3s, left 0.3s;
+}
+.nav-xl li:hover {
+  color: #ff5b1a;
+}
+.nav-xl li:hover::before {
+  width: 100%;
+  left: 0;
+}
+.nav-xl li .active-language {
+  color: #ff5b1a;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-xl {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

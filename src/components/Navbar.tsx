@@ -1,33 +1,15 @@
-import { MdLightMode, MdOutlineLightMode } from "react-icons/md";
 import MetaLogo from "./MetaLogo";
 import { BiCollapseAlt } from "react-icons/bi";
 import NavBarButton from "./NavBarButton";
-import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { setLang } from "../features/appSlice";
+import NavXlOptions from "./NavXlOptions";
 
 interface NavbarProps {
   toggleSideBar: () => void;
-  toggleLightMode: () => void;
-  isLightMode: boolean;
 }
-const Navbar = ({
-  toggleSideBar,
-  toggleLightMode,
-  isLightMode,
-}: NavbarProps) => {
+const Navbar = ({ toggleSideBar }: NavbarProps) => {
   const { t } = useTranslation();
-  const lang = useAppSelector((state) => state.app.lang);
-  const dispatch = useAppDispatch();
-
-  const isEng = lang === "en";
-  const changeLanguage = () => {
-    const lang = i18next.language === "es" ? "en" : "es";
-    i18next.changeLanguage(lang);
-    dispatch(setLang(lang));
-  };
 
   const { user, isAuthenticated } = useAuth0();
   const isUser = isAuthenticated && user;
@@ -50,17 +32,7 @@ const Navbar = ({
         )}
       </div>
       <ul className="nav-options">
-        <div className="nav-xl">
-          <li>
-            <NavBarButton isEng={isEng} func={changeLanguage} />
-          </li>
-          <li>
-            <NavBarButton
-              Icon={isLightMode ? MdOutlineLightMode : MdLightMode}
-              func={toggleLightMode}
-            />
-          </li>
-        </div>
+        <NavXlOptions />
         <div className="nav-md">
           <li>
             <NavBarButton Icon={BiCollapseAlt} func={toggleSideBar} />

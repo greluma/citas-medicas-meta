@@ -4,19 +4,14 @@ import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { setUser, toggleLightTheme } from "../features/appSlice";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { setUser } from "../features/appSlice";
+import { useAppDispatch } from "../app/hooks";
 
 const Landing = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
   const { isAuthenticated, user } = useAuth0();
 
   const dispatch = useAppDispatch();
-  const isLightMode = useAppSelector((state) => state.app.isLightTheme);
-
-  function toggleLightMode() {
-    dispatch(toggleLightTheme());
-  }
 
   function toggleSideBar() {
     setIsSideBarOpen(!isSideBarOpen);
@@ -38,11 +33,7 @@ const Landing = () => {
 
   return (
     <Container clases={`main-container`}>
-      <Navbar
-        toggleSideBar={toggleSideBar}
-        toggleLightMode={toggleLightMode}
-        isLightMode={isLightMode}
-      />
+      <Navbar toggleSideBar={toggleSideBar} />
       <Container clases="content-container">
         <SideBar isSideBarOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
         <Container clases={`content ${isSideBarOpen && "content-opacity"}`}>
