@@ -1012,5 +1012,27 @@ body {
     display: none;
   }
 }
+.back-btn {
+  background-color: transparent;
+  border: none;
+  color: #ff5b1a;
+  font-size: 1.8rem;
+  display: grid;
+  justify-content: center;
+  transition: all 0.3s;
+  font-size: 2rem;
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+}
+.back-btn:hover {
+  color: #ff7c48;
+}
+
+@media screen and (max-width: 768px) {
+  .back-btn {
+    font-size: 1.5rem;
+  }
+}
 
 /*# sourceMappingURL=main.css.map */

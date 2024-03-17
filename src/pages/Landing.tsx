@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { setUser } from "../features/appSlice";
 import { useAppDispatch } from "../app/hooks";
+import BackButton from "../components/BackButton";
 
 const Landing = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
@@ -37,6 +38,7 @@ const Landing = () => {
       <Container clases="content-container">
         <SideBar isSideBarOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
         <Container clases={`content ${isSideBarOpen && "content-opacity"}`}>
+          <BackButton />
           <Outlet />
         </Container>
       </Container>
