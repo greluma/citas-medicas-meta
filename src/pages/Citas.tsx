@@ -46,7 +46,7 @@ const Citas = () => {
     <div className="content-wrapper">
       <PageTitle title={t("citas")} />
       <form className="citas-form" onSubmit={handleSubmit}>
-        <h3>solicitar nueva cita</h3>
+        <h3>{t("newCita")}</h3>
         <div className="select-wrapper">
           <select
             name="especialistas"
@@ -54,11 +54,11 @@ const Citas = () => {
             onChange={handleChange}
             disabled={noDoc}
           >
-            {noDoc && <option value={""}>no doctor</option>}
+            {noDoc && <option value={""}>{t("noDisp")}</option>}
             {!noDoc &&
-              doctors.map((doc) => (
+              doctors.map((doc, index) => (
                 <option key={doc.id} value={doc.id}>
-                  {doc.especialidad}
+                  {t(`doctors.${index + 1}`)}
                 </option>
               ))}
           </select>

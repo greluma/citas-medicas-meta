@@ -19,6 +19,7 @@ const Farmacia = () => {
   const [time, setTime] = useState<string>("10:00");
   const dispatch = useAppDispatch();
   const { treatments } = useAppSelector((state) => state.app);
+  console.log(t("toasti.date"));
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
@@ -35,12 +36,17 @@ const Farmacia = () => {
 
   function deleteTreatmentHandler(e: React.MouseEvent<HTMLButtonElement>) {
     dispatch(deleteTreatment(e.currentTarget.ariaLabel!));
+    toast.success(t("toasti.del"));
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (selectedDays.length === 0 || !treatment) {
-      toast.error("Selecciona al menos un día y un tratamiento");
+    if (selectedDays.length === 0) {
+      toast.error(t("toasti.date"));
+      return;
+    }
+    if (!treatment) {
+      toast.error(t("toasti.treat"));
       return;
     }
     const newTreatment = {
@@ -54,7 +60,7 @@ const Farmacia = () => {
     setSelectedDays([]);
     setTreatment("");
     setTime("10:00");
-    toast.success("Tratamiento Agregado");
+    toast.success(t("toasti.add"));
   }
 
   function handleTimeChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -65,12 +71,12 @@ const Farmacia = () => {
     <div className="farmacia">
       <PageTitle title={t("farmacia")} />
       <form onSubmit={handleSubmit} className="farmacia-form">
-        <h3>agregar tratamiento</h3>
+        <h3>{t("addTreat")}</h3>
         <div className="farmacia-content">
           <div className="farmacia-inputs">
             <input
               type="text"
-              placeholder="write meds..."
+              placeholder={t("writeMeds")}
               value={treatment}
               onChange={handleTreatmentChange}
             />
