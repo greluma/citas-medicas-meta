@@ -2,21 +2,20 @@
   background-color: var(--color-background);
   color: var(--color-text);
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
   height: 100vh;
   align-content: center;
+  justify-content: center;
 
   &-container {
-    grid-column: 4/8;
+    max-width: 400px;
     text-align: center;
     display: grid;
+
     row-gap: 1rem;
     justify-items: center;
     background-color: var(--color-background-secondary);
     padding: 1rem 2rem;
     border-radius: 2rem;
-    min-width: fit-content;
-    max-width: fit-content;
   }
 
   & h2 {
