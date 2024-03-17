@@ -10,3 +10,4 @@ export { default as Users } from "./Users";
 export { default as Login } from "./Login.tsx";
 export { default as Home } from "./Home.tsx";
 export { default as CitaDetail } from "./CitaDetail.tsx";
+export { default as About } from "./About.tsx";

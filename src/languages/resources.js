@@ -52,6 +52,9 @@ export const resources = {
         14: "Gynecologist",
         15: "Hematologist",
       },
+      about: "about",
+      dev: "the developer",
+      cv: "download cv",
     },
   },
   es: {
@@ -107,6 +110,9 @@ export const resources = {
         14: "Ginecólogo",
         15: "Hematólogo",
       },
+      about: "acerca de",
+      dev: "el desarrollador",
+      cv: "descargar cv",
     },
   },
 };

@@ -44,7 +44,7 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }: SideBarProps) => {
         { name: t("farmacia"), path: "/farmacia" },
         { name: t("centros"), path: "/centros" },
         // TODO cambiar por about me o algo asi con acceso a cv
-        { name: t("config"), path: "/config" },
+        { name: t("about"), path: "/about" },
       ],
     },
     /* {
