@@ -43,15 +43,23 @@ interface AppState {
   treatments: Treatment[] | [];
 }
 
+function getLocalStorage<T>(key: string): T | [] {
+  const item = localStorage.getItem(key);
+  if (item) {
+    return JSON.parse(item);
+  }
+  return [];
+}
+
 const initialState: AppState = {
   isLightTheme: localStorage.getItem("isLightTheme") === "true" || false,
   user: localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user")!)
     : null,
   lang: (localStorage.getItem("lang") as "es" | "en") || "es",
-  doctors: [],
-  appointments: [],
-  treatments: [],
+  doctors: getLocalStorage<Doctor[]>("doctors"),
+  appointments: getLocalStorage<Appointment[]>("appointments"),
+  treatments: getLocalStorage<Treatment[]>("treatments"),
 };
 
 export const appSlice = createSlice({
@@ -72,6 +80,7 @@ export const appSlice = createSlice({
     },
     setDoctors: (state, action: PayloadAction<Doctor[]>) => {
       state.doctors = action.payload;
+      localStorage.setItem("doctors", JSON.stringify(state.doctors));
     },
     addAppointment: (state, action: PayloadAction<Appointment>) => {
       state.appointments = [...state.appointments, action.payload];
@@ -79,6 +88,7 @@ export const appSlice = createSlice({
       state.doctors = state.doctors.filter(
         (doc) => doc.id !== action.payload.doctor.id
       );
+      localStorage.setItem("appointments", JSON.stringify(state.appointments));
     },
     cancelAppointment: (state, action: PayloadAction<string>) => {
       const appointment = state.appointments.find(
@@ -88,6 +98,8 @@ export const appSlice = createSlice({
       state.appointments = state.appointments.filter(
         (app) => app.id !== action.payload
       );
+
+      localStorage.setItem("appointments", JSON.stringify(state.appointments));
     },
     setAppointmentDate: (state, action: PayloadAction<string>) => {
       const appointment = state.appointments.find(
@@ -96,14 +108,18 @@ export const appSlice = createSlice({
       appointment!.date = formatDate(
         getRandomAppointment(appointment!.date.getTime)
       );
+      state.appointments = orgDates(state.appointments);
+      localStorage.setItem("appointments", JSON.stringify(state.appointments));
     },
     addTreatment: (state, action: PayloadAction<Treatment>) => {
       state.treatments = [...state.treatments, action.payload];
+      localStorage.setItem("treatments", JSON.stringify(state.treatments));
     },
     deleteTreatment: (state, action: PayloadAction<string>) => {
       state.treatments = state.treatments.filter(
         (treatment) => treatment.id !== action.payload
       );
+      localStorage.setItem("treatments", JSON.stringify(state.treatments));
     },
   },
 });
