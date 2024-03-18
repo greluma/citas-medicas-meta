@@ -56,9 +56,9 @@ const Citas = () => {
           >
             {noDoc && <option value={""}>{t("noDisp")}</option>}
             {!noDoc &&
-              doctors.map((doc, index) => (
+              doctors.map((doc) => (
                 <option key={doc.id} value={doc.id}>
-                  {t(`doctors.${index + 1}`)}
+                  {t(`doctors.${doc.id.slice(4)}`)}
                 </option>
               ))}
           </select>

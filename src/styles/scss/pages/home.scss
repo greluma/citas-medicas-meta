@@ -1,0 +1,104 @@
+.home {
+  display: grid;
+  gap: 1rem;
+  &-wrapper {
+    display: grid;
+    justify-content: center;
+    gap: 2rem;
+  }
+  &-citas {
+    display: grid;
+    border: 3px solid var(--color-background-op);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    gap: 0.5rem;
+    &-title {
+      font-size: size(xs);
+      color: color(primary-500);
+      text-transform: capitalize;
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      text-align: center;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid var(--color-background-op);
+      & a {
+        @include addBtn;
+        font-size: 1.5rem;
+        align-self: center;
+      }
+    }
+
+    &-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    &-add {
+      background-color: var(--color-background-op);
+      border-radius: 0.4rem;
+      padding: 0.4rem;
+      display: flex;
+      text-transform: capitalize;
+      gap: 0.5rem;
+      align-items: center;
+
+      & a {
+        @include addBtn;
+      }
+    }
+    &-next {
+      display: grid;
+      justify-items: center;
+      gap: 0.3rem;
+      text-align: center;
+      & h3 {
+        color: color(grey-100);
+      }
+      & .esp {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  hr {
+    width: 100%;
+    border: 1px solid var(--color-background-op);
+  }
+
+  &-pills-content {
+    display: grid;
+    gap: 0.5rem;
+    & li {
+      text-align: center;
+    }
+
+    & li p {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr) 2fr;
+      text-transform: capitalize;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    font-size: 0.8rem;
+
+    &-citas {
+      &-title {
+        font-size: size(xs2);
+
+        & a {
+          font-size: 1rem;
+        }
+      }
+
+      &-add {
+        & a {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import programmingImg from "../assets/images/programming.svg";
 import PageTitle from "../components/PageTitle";
 import { IoIosMail } from "react-icons/io";
+import { FaGithub } from "react-icons/fa";
 
 const About = () => {
   const { t } = useTranslation();
@@ -18,6 +19,18 @@ const About = () => {
               <IoIosMail />
             </span>
             <a href="mailto:greluma2@gmail.com">greluma2@gmail.com</a>
+          </div>
+          <div className="about-mail-det">
+            <span>
+              <FaGithub />
+            </span>
+            <a
+              href="https://github.com/greluma/citas-medicas-meta"
+              rel="noreferrer"
+              target="_blank"
+            >
+              {t("github")}
+            </a>
           </div>
         </div>
         <a

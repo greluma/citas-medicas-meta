@@ -46,5 +46,3 @@ export async function getRandomUsers(
     return [];
   }
 }
-
-// console.log(await getRandomUsers(1));

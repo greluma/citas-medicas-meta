@@ -55,6 +55,7 @@ export const resources = {
       about: "about",
       dev: "the developer",
       cv: "download cv",
+      github: "Code on Github",
     },
   },
   es: {
@@ -113,6 +114,8 @@ export const resources = {
       about: "acerca de",
       dev: "el desarrollador",
       cv: "descargar cv",
+
+      github: "Código en Github",
     },
   },
 };

@@ -572,7 +572,7 @@ body {
 .about-mail {
   display: grid;
   justify-items: center;
-  gap: 0.1rem;
+  gap: 0.5rem;
 }
 .about-mail h3 {
   text-transform: capitalize;
@@ -633,6 +633,116 @@ body {
   .about-mail-det {
     gap: 0.5rem;
     font-size: 1.2rem;
+  }
+}
+.home {
+  display: grid;
+  gap: 1rem;
+}
+.home-wrapper {
+  display: grid;
+  justify-content: center;
+  gap: 2rem;
+}
+.home-citas {
+  display: grid;
+  border: 3px solid var(--color-background-op);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  gap: 0.5rem;
+}
+.home-citas-title {
+  font-size: 1.5rem;
+  color: #ff5b1a;
+  text-transform: capitalize;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--color-background-op);
+}
+.home-citas-title a {
+  background-color: transparent;
+  border: none;
+  color: #ff5b1a;
+  font-size: 1.8rem;
+  display: grid;
+  justify-content: center;
+  transition: all 0.3s;
+  font-size: 1.5rem;
+  align-self: center;
+}
+.home-citas-title a:hover {
+  color: #ff7c48;
+}
+.home-citas-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.home-citas-add {
+  background-color: var(--color-background-op);
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  display: flex;
+  text-transform: capitalize;
+  gap: 0.5rem;
+  align-items: center;
+}
+.home-citas-add a {
+  background-color: transparent;
+  border: none;
+  color: #ff5b1a;
+  font-size: 1.8rem;
+  display: grid;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.home-citas-add a:hover {
+  color: #ff7c48;
+}
+.home-citas-next {
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  text-align: center;
+}
+.home-citas-next h3 {
+  color: #b5b5b5;
+}
+.home-citas-next .esp {
+  text-transform: uppercase;
+}
+.home hr {
+  width: 100%;
+  border: 1px solid var(--color-background-op);
+}
+.home-pills-content {
+  display: grid;
+  gap: 0.5rem;
+}
+.home-pills-content li {
+  text-align: center;
+}
+.home-pills-content li p {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) 2fr;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    font-size: 0.8rem;
+  }
+  .home-citas-title {
+    font-size: 1.2rem;
+  }
+  .home-citas-title a {
+    font-size: 1rem;
+  }
+  .home-citas-add a {
+    font-size: 1.5rem;
   }
 }
 .logo {

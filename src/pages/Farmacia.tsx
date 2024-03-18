@@ -19,7 +19,6 @@ const Farmacia = () => {
   const [time, setTime] = useState<string>("10:00");
   const dispatch = useAppDispatch();
   const { treatments } = useAppSelector((state) => state.app);
-  console.log(t("toasti.date"));
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
