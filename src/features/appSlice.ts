@@ -79,17 +79,19 @@ export const appSlice = createSlice({
         (doc) => doc.id !== action.payload.doctor.id
       );
       localStorage.setItem("appointments", JSON.stringify(state.appointments));
+      localStorage.setItem("doctors", JSON.stringify(state.doctors));
     },
     cancelAppointment: (state, action: PayloadAction<string>) => {
       const appointment = state.appointments.find(
         (app) => app.id === action.payload
       );
-      state.doctors = [...state.doctors, appointment!.doctor].sort((a, b) =>
-        a.especialidad.localeCompare(b.especialidad)
-      );
       state.appointments = state.appointments.filter(
         (app) => app.id !== action.payload
       );
+      state.doctors = [...state.doctors, appointment!.doctor].sort((a, b) =>
+        a.especialidad.localeCompare(b.especialidad)
+      );
+      localStorage.setItem("doctors", JSON.stringify(state.doctors));
 
       localStorage.setItem("appointments", JSON.stringify(state.appointments));
     },

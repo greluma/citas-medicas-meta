@@ -20,6 +20,7 @@ const Citas = () => {
 
   const dispatch = useAppDispatch();
   const noDoc = doctors.length === 0;
+  const noApp = appointments.length === 0;
 
   // obtener el primer valor de la lista de doctores para el select
   useEffect(() => {
@@ -28,7 +29,7 @@ const Citas = () => {
 
   // obtener la lista de doctores si no hay ninguno
   useEffect(() => {
-    if (noDoc && appointments.length === 0) {
+    if (noDoc && noApp) {
       dispatch(fetchDoctors());
     }
   }, []);
