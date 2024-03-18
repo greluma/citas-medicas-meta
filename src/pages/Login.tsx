@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const { loginWithRedirect } = useAuth0();
-
   const { t } = useTranslation();
 
   return (

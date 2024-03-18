@@ -25,7 +25,7 @@ export interface UserBasicData {
   phone: string;
 }
 
-// * generar datos de usuarios random
+// * generar datos de usuarios random de la API randomuser.me
 export async function getRandomUsers(
   cantidad: number = 10
 ): Promise<UserBasicData[]> {

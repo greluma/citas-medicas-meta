@@ -12,11 +12,8 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
     return <Loader />;
   }
   if (error) {
-    // * TODO crear un boto para volver a home en caso de error
     return <WrapperInfo desc={error.message} img={bug_img} title="error" />;
   }
   return <>{children}</>;
 };
 export default AuthWrapper;
-
-// <div>Oops... {error.message}</div>

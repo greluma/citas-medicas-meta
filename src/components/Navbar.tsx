@@ -4,15 +4,18 @@ import NavBarButton from "./NavBarButton";
 import { useTranslation } from "react-i18next";
 import { useAuth0 } from "@auth0/auth0-react";
 import NavXlOptions from "./NavXlOptions";
+import noUserImg from "../assets/images/no_user.png";
 
 interface NavbarProps {
   toggleSideBar: () => void;
 }
+
 const Navbar = ({ toggleSideBar }: NavbarProps) => {
   const { t } = useTranslation();
-
   const { user, isAuthenticated } = useAuth0();
+
   const isUser = isAuthenticated && user;
+  const picture = user?.picture || noUserImg;
   const userName =
     (isUser && user.given_name) || user?.nickname || t("usuario");
 
@@ -22,9 +25,7 @@ const Navbar = ({ toggleSideBar }: NavbarProps) => {
         <MetaLogo />
       </div>
       <div className="nav-user">
-        {isUser && user.picture && (
-          <img src={user.picture} alt="user" className="nav-user-img" />
-        )}
+        <img src={picture} alt="user" className="nav-user-img" />
         {isUser && (
           <h2 className="nav-user-hello">
             {t("saludo")}, {userName} !

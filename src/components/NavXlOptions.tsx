@@ -5,14 +5,13 @@ import { MdLightMode, MdOutlineLightMode } from "react-icons/md";
 import { setLang, toggleLightTheme } from "../features/appSlice";
 
 const NavXlOptions = () => {
-  const isLightMode = useAppSelector((state) => state.app.isLightTheme);
+  const { isLightTheme, lang } = useAppSelector((state) => state.app);
+  const isEng = lang === "en";
+  const dispatch = useAppDispatch();
 
   function toggleLightMode() {
     dispatch(toggleLightTheme());
   }
-  const lang = useAppSelector((state) => state.app.lang);
-  const dispatch = useAppDispatch();
-  const isEng = lang === "en";
 
   const changeLanguage = () => {
     const lang = i18next.language === "es" ? "en" : "es";
@@ -27,7 +26,7 @@ const NavXlOptions = () => {
       </li>
       <li>
         <NavBarButton
-          Icon={isLightMode ? MdOutlineLightMode : MdLightMode}
+          Icon={isLightTheme ? MdOutlineLightMode : MdLightMode}
           func={toggleLightMode}
         />
       </li>

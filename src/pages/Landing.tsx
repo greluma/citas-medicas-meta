@@ -9,28 +9,31 @@ import { useAppDispatch } from "../app/hooks";
 import BackButton from "../components/BackButton";
 
 const Landing = () => {
-  const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
   const { isAuthenticated, user } = useAuth0();
+  const isUser = isAuthenticated && user;
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  // side bar functionality
+  const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
 
   function toggleSideBar() {
     setIsSideBarOpen(!isSideBarOpen);
   }
 
-  const isUser = isAuthenticated && user;
-  const navigate = useNavigate();
-
   useEffect(() => {
+    // if user is not authenticated, redirect to login
     if (!isUser) {
       navigate("/login");
     } else {
+      // if user is authenticated, set user data
       const { name, email, picture } = user;
       if (name && email && picture) {
         dispatch(setUser({ data: { name, email, picture } }));
       }
     }
-  }, []);
+  }, [isUser, user, navigate, dispatch]);
 
   return (
     <Container clases={`main-container`}>

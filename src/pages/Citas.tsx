@@ -2,44 +2,49 @@ import { useTranslation } from "react-i18next";
 import PageTitle from "../components/PageTitle";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import React, { useEffect, useState, type ChangeEvent } from "react";
-import { addAppointment, fetchDoctors } from "../features/appSlice";
+import { addAppointment } from "../features/appSlice";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { uniqueId } from "lodash-es";
 import { getRandomAppointment } from "../utils/creacion_citas/getRandomAppointment";
 import { formatDate } from "../utils/formatDate";
 import { type Doctor } from "../utils/creacion_citas/relacion_doc_esp";
 import { MdReadMore } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { fetchDoctors } from "../utils/fetchDoctors";
+import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 
 const Citas = () => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
   const { doctors, appointments } = useAppSelector((state) => state.app);
-
   const [selectedValue, setSelectedValue] = useState<string>("");
 
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedValue(event.target.value);
-  };
-
+  const dispatch = useAppDispatch();
   const noDoc = doctors.length === 0;
 
+  // obtener el primer valor de la lista de doctores para el select
   useEffect(() => {
     setSelectedValue(doctors[0]?.id);
   }, [doctors]);
 
+  // obtener la lista de doctores si no hay ninguno
   useEffect(() => {
     if (noDoc && appointments.length === 0) {
       dispatch(fetchDoctors());
     }
   }, [dispatch, noDoc, appointments.length]);
 
+  // handlers
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedValue(event.target.value);
+  };
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const specialist = doctors.find((doc: Doctor) => doc.id === selectedValue)!;
-    const id = uniqueId("app_");
+    const id = `app_${uuidv4()}`;
     const date = formatDate(getRandomAppointment());
     dispatch(addAppointment({ doctor: specialist, date, id }));
+    toast.success(t("citaCreada"));
   }
 
   return (

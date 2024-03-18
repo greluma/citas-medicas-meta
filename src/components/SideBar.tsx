@@ -25,35 +25,19 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }: SideBarProps) => {
 
   function handleLogout() {
     logout();
-    // TODO: redirigir a login
   }
 
   const sideBarItems: SideBarItemsType = [
-    /* {
-      pack: "utils",
-      list: [
-        { name: t("home"), path: "/" },
-        { name: t("datos"), path: "/user" },
-      ],
-    }, */
     {
       pack: "functions",
       list: [
         { name: t("home"), path: "/" },
         { name: t("citas"), path: "/citas" },
         { name: t("farmacia"), path: "/farmacia" },
-        { name: t("centros"), path: "/centros" },
-        // TODO cambiar por about me o algo asi con acceso a cv
+        // { name: t("centros"), path: "/centros" },
         { name: t("about"), path: "/about" },
       ],
     },
-    /* {
-      pack: "system",
-      list: [
-        { name: t("usuarios"), path: "/users" },
-        { name: t("config"), path: "/config" },
-      ],
-    }, */
   ];
 
   return (
@@ -83,7 +67,6 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }: SideBarProps) => {
         <ul className="sidebar-options">
           <NavXlOptions />
         </ul>
-
         <div className="close-sesion-container">
           <button onClick={handleLogout}>{t("logOut")}</button>
         </div>

@@ -1,3 +1,4 @@
+// funcionalidad para generar una fecha aleatoria entre la fecha actual y dos meses después simulando una cita médica
 export function getRandomAppointment(getTime: number = 0): Date {
   let today: Date;
   let twoMonthsFromNow: Date;

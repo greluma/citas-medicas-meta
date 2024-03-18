@@ -1,11 +1,9 @@
-import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { orgDates } from "../utils/orgDates";
-import {
-  createDocs,
-  type Doctor,
-} from "../utils/creacion_citas/relacion_doc_esp";
+import { type Doctor } from "../utils/creacion_citas/relacion_doc_esp";
 import { getRandomAppointment } from "../utils/creacion_citas/getRandomAppointment";
 import { formatDate } from "../utils/formatDate";
+import { getLocalStorage } from "../utils/getLocalStorage";
 
 interface UserData {
   name: string;
@@ -43,23 +41,15 @@ interface AppState {
   treatments: Treatment[] | [];
 }
 
-function getLocalStorage<T>(key: string): T | [] {
-  const item = localStorage.getItem(key);
-  if (item) {
-    return JSON.parse(item);
-  }
-  return [];
-}
-
 const initialState: AppState = {
   isLightTheme: localStorage.getItem("isLightTheme") === "true" || false,
-  user: localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user")!)
-    : null,
   lang: (localStorage.getItem("lang") as "es" | "en") || "es",
   doctors: getLocalStorage<Doctor[]>("doctors"),
   appointments: getLocalStorage<Appointment[]>("appointments"),
   treatments: getLocalStorage<Treatment[]>("treatments"),
+  user: localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user")!)
+    : null,
 };
 
 export const appSlice = createSlice({
@@ -135,10 +125,5 @@ export const {
   addTreatment,
   deleteTreatment,
 } = appSlice.actions;
-
-export const fetchDoctors = () => async (dispatch: Dispatch) => {
-  const doctorsData = await createDocs();
-  dispatch(setDoctors(doctorsData));
-};
 
 export default appSlice.reducer;

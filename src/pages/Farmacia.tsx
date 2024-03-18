@@ -5,21 +5,26 @@ import DayElement from "../components/DayElement";
 import React, { useState } from "react";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
-import { uniqueId } from "lodash-es";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { addTreatment, deleteTreatment } from "../features/appSlice";
 import { MdDeleteOutline } from "react-icons/md";
 import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 
 const Farmacia = () => {
+  const { treatments } = useAppSelector((state) => state.app);
   const { t } = useTranslation();
-  const days: string[] = Object.values(t("days", { returnObjects: true }));
+  const dispatch = useAppDispatch();
+
+  // local state for the form
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [treatment, setTreatment] = useState<string>("");
   const [time, setTime] = useState<string>("10:00");
-  const dispatch = useAppDispatch();
-  const { treatments } = useAppSelector((state) => state.app);
 
+  // utility for translate days
+  const days: string[] = Object.values(t("days", { returnObjects: true }));
+
+  // handlers
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
     if (selectedDays.includes(value)) {
@@ -33,6 +38,10 @@ const Farmacia = () => {
     setTreatment(e.target.value);
   }
 
+  function handleTimeChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTime(e.target.value);
+  }
+
   function deleteTreatmentHandler(e: React.MouseEvent<HTMLButtonElement>) {
     dispatch(deleteTreatment(e.currentTarget.ariaLabel!));
     toast.success(t("toasti.del"));
@@ -40,6 +49,8 @@ const Farmacia = () => {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    // validation
     if (selectedDays.length === 0) {
       toast.error(t("toasti.date"));
       return;
@@ -48,22 +59,23 @@ const Farmacia = () => {
       toast.error(t("toasti.treat"));
       return;
     }
+
+    // create new treatment
     const newTreatment = {
       selectedDays,
       treatment,
       time,
-      id: uniqueId(),
+      id: uuidv4(),
     };
 
+    // dispatch
     dispatch(addTreatment(newTreatment));
+
+    // clear form
     setSelectedDays([]);
     setTreatment("");
     setTime("10:00");
     toast.success(t("toasti.add"));
-  }
-
-  function handleTimeChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setTime(e.target.value);
   }
 
   return (

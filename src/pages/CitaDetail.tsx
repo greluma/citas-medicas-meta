@@ -1,22 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import {
-  cancelAppointment,
-  setAppointmentDate,
-  type Appointment,
-} from "../features/appSlice";
+import { cancelAppointment, setAppointmentDate } from "../features/appSlice";
 import PageTitle from "../components/PageTitle";
 import MainBtn from "../components/MainBtn";
-
-function findAppointment(id: string, appointments: Appointment[]) {
-  id = id.slice(4);
-  return appointments.find((app) => app.id === id);
-}
+import { findAppointment } from "../utils/findAppointment";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const CitaDetail = () => {
   const { citaId } = useParams<{ citaId: string }>();
   const { appointments } = useAppSelector((state) => state.app);
   const appointment = findAppointment(citaId!, appointments);
+  const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -29,15 +24,18 @@ const CitaDetail = () => {
   function handleCancelAppointment() {
     dispatch(cancelAppointment(citaId!.slice(4)));
     navigate("/citas");
+    toast.error(t("citaElim"));
   }
+
   function handleSetAppointmentDate() {
     dispatch(setAppointmentDate(citaId!.slice(4)));
+    toast.success(t("citaNewDate"));
   }
 
   return (
     <div className="cita-detail">
       <div className="cita-detail-title">
-        <PageTitle title="Detalles de la Cita" />
+        <PageTitle title={t("citaDetail.title")} />
       </div>
       <div className="cita-detail-info">
         <h3>{especialidad}</h3>
@@ -49,13 +47,23 @@ const CitaDetail = () => {
           </div>
         </div>
         <div className="cita-detail-date">
-          <p>hora: {time}</p>
-          <p>fecha: {date}</p>
+          <p>
+            {t("citaDetail.time")}: {time}
+          </p>
+          <p>
+            {t("citaDetail.date")}: {date}
+          </p>
         </div>
       </div>
       <div className="cita-detail-btns">
-        <MainBtn title="Nueva Fecha" func={handleSetAppointmentDate} />
-        <MainBtn title="Cancelar Cita" func={handleCancelAppointment} />
+        <MainBtn
+          title={t("citaDetail.newDate")}
+          func={handleSetAppointmentDate}
+        />
+        <MainBtn
+          title={t("citaDetail.cancel")}
+          func={handleCancelAppointment}
+        />
       </div>
     </div>
   );
