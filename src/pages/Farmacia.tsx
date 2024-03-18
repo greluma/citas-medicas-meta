@@ -3,8 +3,6 @@ import PageTitle from "../components/PageTitle";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import DayElement from "../components/DayElement";
 import React, { useState } from "react";
-import "react-time-picker/dist/TimePicker.css";
-import "react-clock/dist/Clock.css";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { addTreatment, deleteTreatment } from "../features/appSlice";
 import { MdDeleteOutline } from "react-icons/md";

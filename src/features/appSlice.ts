@@ -84,7 +84,9 @@ export const appSlice = createSlice({
       const appointment = state.appointments.find(
         (app) => app.id === action.payload
       );
-      state.doctors = [...state.doctors, appointment!.doctor];
+      state.doctors = [...state.doctors, appointment!.doctor].sort((a, b) =>
+        a.especialidad.localeCompare(b.especialidad)
+      );
       state.appointments = state.appointments.filter(
         (app) => app.id !== action.payload
       );

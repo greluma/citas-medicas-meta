@@ -31,7 +31,7 @@ const Citas = () => {
     if (noDoc && appointments.length === 0) {
       dispatch(fetchDoctors());
     }
-  }, [dispatch, noDoc, appointments.length]);
+  }, []);
 
   // handlers
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -63,7 +63,7 @@ const Citas = () => {
             {!noDoc &&
               doctors.map((doc) => (
                 <option key={doc.id} value={doc.id}>
-                  {t(`doctors.${doc.id.slice(4)}`)}
+                  {doc.especialidad}
                 </option>
               ))}
           </select>
