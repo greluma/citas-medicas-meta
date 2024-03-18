@@ -3,6 +3,7 @@ import programmingImg from "../assets/images/programming.svg";
 import PageTitle from "../components/PageTitle";
 import { IoIosMail } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
+import cv from "../../public/Manuel_Rodriguez_Prieto_CV_ESP.pdf";
 
 const About = () => {
   const { t } = useTranslation();
@@ -33,11 +34,7 @@ const About = () => {
             </a>
           </div>
         </div>
-        <a
-          className="cv"
-          href="../../public/Manuel Rodriguez Prieto CV - ESP.pdf"
-          download
-        >
+        <a className="cv" href={cv} download>
           {t("cv")}
         </a>
       </div>
