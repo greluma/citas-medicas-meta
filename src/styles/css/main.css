@@ -718,6 +718,9 @@ body {
 .home-citas-next .esp {
   text-transform: uppercase;
 }
+.home-citas-next p {
+  text-transform: capitalize;
+}
 .home hr {
   width: 100%;
   border: 1px solid var(--color-background-op);

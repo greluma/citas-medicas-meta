@@ -56,6 +56,14 @@ export const resources = {
       dev: "the developer",
       cv: "download cv",
       github: "Code on Github",
+      homePage: {
+        resCitas: "Appointments summary",
+        addNew: "new schedule",
+        nextCita: "Next Appointment",
+        noCitas: "No appointments scheduled",
+        resFarm: "Pharmacy summary",
+        noFarm: "No drugs added",
+      },
     },
   },
   es: {
@@ -114,8 +122,15 @@ export const resources = {
       about: "acerca de",
       dev: "el desarrollador",
       cv: "descargar cv",
-
       github: "Código en Github",
+      homePage: {
+        resCitas: "Resumen de citas",
+        addNew: "solicitar nueva cita",
+        nextCita: "Próxima Cita",
+        noCitas: "No hay citas programadas",
+        resFarm: "Resumen de farmacia",
+        noFarm: "No hay medicamentos agregados",
+      },
     },
   },
 };
