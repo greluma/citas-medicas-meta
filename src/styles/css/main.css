@@ -936,6 +936,23 @@ body {
     display: block;
   }
 }
+@media screen and (max-width: 400px) {
+  .nav {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .nav-logo {
+    grid-column: 1/3;
+  }
+  .nav-user {
+    grid-column: 3/5;
+  }
+  .nav-options {
+    grid-column: 5/-1;
+  }
+  .nav-user-hello {
+    display: none;
+  }
+}
 .wrapper-info {
   background-color: var(--color-background);
   color: var(--color-text);
