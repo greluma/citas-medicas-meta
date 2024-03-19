@@ -14,6 +14,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       clientId={CLIENT_ID}
       authorizationParams={{
         redirect_uri: window.location.origin,
+        screen_hint: "signup",
       }}
       cacheLocation="localstorage"
     >
