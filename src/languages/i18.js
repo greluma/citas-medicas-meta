@@ -16,3 +16,5 @@ i18next.use(initReactI18next).use(LanguageDetector).init({
     es,
   },
 });
+
+export default i18next;

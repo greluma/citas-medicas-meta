@@ -405,7 +405,11 @@ body {
 .cita-detail-doc-data :last-child {
   font-size: 1em;
 }
+.cita-detail .animation-date {
+  border: 2px solid #ff7c48;
+}
 .cita-detail-date {
+  transition: all ease-in-out 50ms;
   justify-self: center;
   padding: 0.3rem;
   border-radius: 0.4rem;

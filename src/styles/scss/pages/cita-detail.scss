@@ -49,7 +49,12 @@
       }
     }
   }
+  & .animation-date {
+    border: 2px solid color(primary-300);
+    // transform: scale(1.05);
+  }
   &-date {
+    transition: all ease-in-out 50ms;
     justify-self: center;
     padding: 0.3rem;
     border-radius: 0.4rem;
